@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="A professional and responsive image gallery showcasing beautiful moments, nature, travel and creative photography.">
+
+    <meta name="keywords"
+        content="image gallery, photography, photo gallery, nature, travel, creative photography">
+
+    <meta name="author" content="Your Name">
+
+    <title>PixelView | Image Gallery</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+
+        <div class="container">
+
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <span class="logo-icon">✦</span>
+                <span>PixelView</span>
+            </a>
+
+            <!-- Navigation -->
+            <nav class="navbar" aria-label="Main Navigation">
+
+                <ul class="nav-list">
+
+                    <li>
+                        <a href="#home" class="nav-link active">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#gallery" class="nav-link">
+                            Gallery
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#categories" class="nav-link">
+                            Categories
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#about" class="nav-link">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contact" class="nav-link">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="menu-toggle"
+                    type="button"
+                    aria-label="Open navigation menu">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+    <main>
+
+        <!-- ================= HERO SECTION ================= -->
+        <section id="home" class="hero-section">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <span class="hero-tag">
+                        ✦ CREATIVE PHOTOGRAPHY
+                    </span>
+
+                    <h1>
+                        Explore the World
+                        <br>
+                        <span>Through Our Lens</span>
+                    </h1>
+
+                    <p>
+                        Discover a curated collection of beautiful
+                        photographs capturing nature, travel, people
+                        and unforgettable moments.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#gallery" class="btn btn-primary">
+                            Explore Gallery
+                        </a>
+
+                        <a href="#about" class="btn btn-secondary">
+                            Learn More
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-image">
+
+                    <img
+                        src="images/hero.jpg"
+                        alt="Beautiful landscape photography"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CATEGORY SECTION ================= -->
+        <section id="categories" class="category-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        EXPLORE
+                    </span>
+
+                    <h2>
+                        Browse By Category
+                    </h2>
+
+                    <p>
+                        Find your favorite photographs by exploring
+                        different categories.
+                    </p>
+
+                </div>
+
+
+                <div class="category-buttons">
+
+                    <button
+                        type="button"
+                        class="category-btn active"
+                        data-category="all">
+                        All Photos
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="nature">
+                        Nature
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="travel">
+                        Travel
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="people">
+                        People
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="architecture">
+                        Architecture
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="animals">
+                        Animals
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+      
+        <!-- ================= GALLERY SECTION ================= -->
+        <section id="gallery" class="gallery-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        OUR COLLECTION
+                    </span>
+
+                    <h2>
+                        Featured Gallery
+                    </h2>
+
+                    <p>
+                        A selection of our favorite photographs
+                        from different places and moments.
+                    </p>
+
+                </div>
+
+
+                <!-- Gallery Grid -->
+                <div class="gallery-grid">
+
+
+                    <!-- Gallery Item 1 -->
+                    <article
+                        class="gallery-item"
+                        data-category="nature">
+
+                        <div class="image-card">
+
+                            <img
+                                src="images/nature-1.jpg"
+                                alt="Mountain landscape surrounded by clouds"
+                                loading="lazy"
+                            >
+
+                            <div class="image-overlay">
+
+                                <div class="image-info">
+
+                                    <span class="image-category">
+                                        Nature
+                                    </span>
+
+                                    <h3>
+                                        Mountain Dreams
+                                    </h3>
+
+                                    <button
+                                        class="view-btn"
+                                        type="button"
+                                        aria-label="View Mountain Dreams">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Gallery Item 2 -->
+                    <article
+                        class="gallery-item"
+                        data-category="travel">
+
+                        <div class="image-card">
+
+                            <img
+                                src="images/travel-1.jpg"
+                                alt="Beautiful road surrounded by mountains"
+                                loading="lazy"
+                            >
+
+                            <div class="image-overlay">
+
+                                <div class="image-info">
+
+                                    <span class="image-category">
+                                        Travel
+                                    </span>
+
+                                    <h3>
+                                        The Open Road
+                                    </h3>
+
+                                    <button
+                                        class="view-btn"
+                                        type="button"
+                                        aria-label="View The Open Road">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Gallery Item 3 -->
+                    <article
+                        class="gallery-item"
+                        data-category="nature">
+
+                        <div class="image-card">
+
+                            <img
+                                src="images/nature-2.jpg"
+                                alt="Green forest with sunlight"
+                                loading="lazy"
+                            >
+
+                            <div class="image-overlay">
+
+                                <div class="image-info">
+
+                                    <span class="image-category">
+                                        Nature
+                                    </span>
+
+                                    <h3>
+                                        Forest Light
+                                    </h3>
+
+                                    <button
+                                        class="view-btn"
+                                        type="button"
+                                        aria-label="View Forest Light">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+                  
+                    <!-- Gallery Item 4 -->
+                    <article
+                        class="gallery-item"
+                        data-category="architecture">
+
+                        <div class="image-card">
+
+                            <img
+                                src="images/architecture-1.jpg"
+                                alt="Modern architectural building"
+                                loading="lazy"
+                            >
+
+                            <div class="image-overlay">
+
+                                <div class="image-info">
+
+                                    <span class="image-category">
+                                        Architecture
+                                    </span>
+
+                                    <h3>
+                                        Modern Lines
+                                    </h3>
+
+                                    <button
+                                        class="view-btn"
+                                        type="button"
+                                        aria-label="View Modern Lines">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Gallery Item 5 -->
+                    <article
+                        class="gallery-item"
+                        data-category="people">
+
+                        <div class="image-card">
+
+                            <img
+                                src="images/people-1.jpg"
+                                alt="Person enjoying a beautiful sunset"
+                                loading="lazy"
+                            >
+
+                            <div class="image-overlay">
+
+                                <div class="image-info">
+
+                                    <span class="image-category">
+                                        People
+                                    </span>
+
+                                    <h3>
+                                        Golden Moment
+                                    </h3>
+
+                                    <button
+                                        class="view-btn"
+                                        type="button"
+                                        aria-label="View Golden Moment">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Gallery Item 6 -->
+                    <article
+                        class="gallery-item"
+                        data-category="animals">
+
+                        <div class="image-card">
+
+                            <img
+                                src="images/animal-1.jpg"
+                                alt="Wild animal in its natural environment"
+                                loading="lazy"
+                            >
+
+                            <div class="image-overlay">
+
+                                <div class="image-info">
+
+                                    <span class="image-category">
+                                        Animals
+                                    </span>
+
+                                    <h3>
+                                        Into The Wild
+                                    </h3>
+
+                                    <button
+                                        class="view-btn"
+                                        type="button"
+                                        aria-label="View Into The Wild">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Gallery Item 7 -->
+                    <article
+                        class="gallery-item"
+                        data-category="travel">
+
+                        <div class="image-card">
+
+                            <img
+                                src="images/travel-2.jpg"
+                                alt="Beautiful beach and ocean view"
+                                loading="lazy"
+                            >
+
+                            <div class="image-overlay">
+
+                                <div class="image-info">
+
+                                    <span class="image-category">
+                                        Travel
+                                    </span>
+
+                                    <h3>
+                                        Ocean Escape
+                                    </h3>
+
+                                    <button
+                                        class="view-btn"
+                                        type="button"
+                                        aria-label="View Ocean Escape">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+                  
+                    <!-- Gallery Item 8 -->
+                    <article
+                        class="gallery-item"
+                        data-category="nature">
+
+                        <div class="image-card">
+
+                            <img
+                                src="images/nature-3.jpg"
+                                alt="Waterfall surrounded by green nature"
+                                loading="lazy"
+                            >
+
+                            <div class="image-overlay">
+
+                                <div class="image-info">
+
+                                    <span class="image-category">
+                                        Nature
+                                    </span>
+
+                                    <h3>
+                                        Hidden Waterfall
+                                    </h3>
+
+                                    <button
+                                        class="view-btn"
+                                        type="button"
+                                        aria-label="View Hidden Waterfall">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LIGHTBOX ================= -->
+        <div
+            id="lightbox"
+            class="lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Image preview"
+            hidden>
+
+            <button
+                type="button"
+                class="lightbox-close"
+                aria-label="Close image preview">
+                &times;
+            </button>
+
+            <button
+                type="button"
+                class="lightbox-prev"
+                aria-label="Previous image">
+                &#10094;
+            </button>
+
+            <div class="lightbox-content">
+
+                <img
+                    id="lightbox-image"
+                    src=""
+                    alt="">
+
+                <div class="lightbox-caption">
+
+                    <h3 id="lightbox-title">
+                        Image Title
+                    </h3>
+
+                    <p id="lightbox-category">
+                        Category
+                    </p>
+
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                class="lightbox-next"
+                aria-label="Next image">
+                &#10095;
+            </button>
+
+        </div>
+
+
+        <!-- ================= ABOUT SECTION ================= -->
+        <section id="about" class="about-section">
+
+            <div class="container">
+
+                <div class="about-content">
+
+                    <div class="about-image">
+
+                        <img
+                            src="images/about.jpg"
+                            alt="Photographer capturing a beautiful landscape"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="about-text">
+
+                        <span class="section-label">
+                            ABOUT PIXELVIEW
+                        </span>
+
+                        <h2>
+                            Capturing Moments,
+                            Creating Memories
+                        </h2>
+
+                        <p>
+                            PixelView is a creative image gallery
+                            dedicated to showcasing inspiring
+                            photographs from around the world.
+                        </p>
+
+                        <p>
+                            From peaceful landscapes to exciting
+                            travel destinations, every photograph
+                            tells a unique story.
+                        </p>
+
+                        <a href="#contact" class="btn btn-primary">
+                            Get In Touch
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+      
+              <!-- ================= CONTACT SECTION ================= -->
+        <section id="contact" class="contact-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        CONTACT
+                    </span>
+
+                    <h2>
+                        Let's Connect
+                    </h2>
+
+                    <p>
+                        Have a question or want to collaborate?
+                        Send us a message.
+                    </p>
+
+                </div>
+
+
+                <form
+                    class="contact-form"
+                    action="#"
+                    method="post">
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            placeholder="Write your message..."
+                            required></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div class="footer-brand">
+
+                    <a href="#home" class="logo">
+                        <span class="logo-icon">✦</span>
+                        <span>PixelView</span>
+                    </a>
+
+                    <p>
+                        Capturing beautiful moments,
+                        one photograph at a time.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <h3>
+                        Quick Links
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            <a href="#home">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#gallery">
+                                Gallery
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#about">
+                                About
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#contact">
+                                Contact
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="footer-social">
+
+                    <h3>
+                        Follow Us
+                    </h3>
+
+                    <div class="social-links">
+
+                        <a href="#" aria-label="Instagram">
+                            Instagram
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            Facebook
+                        </a>
+
+                        <a href="#" aria-label="GitHub">
+                            GitHub
+                        </a>
+
+                        <a href="#" aria-label="LinkedIn">
+                            LinkedIn
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; 2026 PixelView. All Rights Reserved.
+                </p>
+
+                <p>
+                    Designed & Developed with HTML, CSS & JavaScript
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
+
+</body>
+  </html>
