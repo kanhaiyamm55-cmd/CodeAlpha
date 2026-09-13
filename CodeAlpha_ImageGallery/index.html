@@ -1,121 +1,845 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="A professional and responsive image gallery showcasing beautiful moments, nature, travel and creative photography.">
+        content="Visual Gallery - A modern responsive image gallery built with HTML, CSS and JavaScript.">
 
-    <meta name="keywords"
-        content="image gallery, photography, photo gallery, nature, travel, creative photography">
+    <title>Visual Gallery | CodeAlpha</title>
 
-    <meta name="author" content="Your Name">
+    <style>
+        /* =========================
+           RESET
+        ========================== */
 
-    <title>PixelView | Image Gallery</title>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- CSS File -->
-    <link rel="stylesheet" href="style.css">
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f8fc;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e8eaf0;
+        }
+
+        .nav-container {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+            color: #172033;
+        }
+
+        .logo span:last-child {
+            color: #6c4df6;
+        }
+
+        .logo-icon {
+            color: #6c4df6;
+            margin-right: 4px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-size: 15px;
+            font-weight: 600;
+            color: #5e6575;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #6c4df6;
+        }
+
+        .nav-button {
+            padding: 11px 19px;
+            background: #6c4df6;
+            color: white;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .nav-button:hover {
+            background: #5335d7;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            padding: 90px 0 80px;
+            background:
+                radial-gradient(circle at 10% 20%, #ebe6ff 0, transparent 32%),
+                radial-gradient(circle at 90% 10%, #e2f3ff 0, transparent 30%),
+                #ffffff;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 50px;
+            background: #eeeaff;
+            color: #6545e8;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 70px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: #6c4df6;
+        }
+
+        .hero p {
+            max-width: 590px;
+            color: #687083;
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .primary-button,
+        .secondary-button {
+            padding: 14px 22px;
+            border-radius: 11px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .primary-button {
+            background: #6c4df6;
+            color: white;
+        }
+
+        .primary-button:hover {
+            background: #5335d7;
+            transform: translateY(-3px);
+        }
+
+        .secondary-button {
+            border: 1px solid #dfe2e9;
+            background: white;
+            color: #273047;
+        }
+
+        .secondary-button:hover {
+            border-color: #6c4df6;
+            color: #6c4df6;
+        }
+
+
+        /* =========================
+           HERO IMAGE
+        ========================== */
+
+        .hero-visual {
+            position: relative;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-card-main {
+            width: 78%;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(35, 40, 70, 0.2);
+            transform: rotate(2deg);
+        }
+
+        .hero-card-main img {
+            height: 470px;
+            object-fit: cover;
+        }
+
+        .floating-card {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 17px;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid #ececf2;
+            border-radius: 14px;
+            box-shadow: 0 15px 40px rgba(30, 35, 60, 0.14);
+        }
+
+        .floating-card span {
+            font-size: 25px;
+        }
+
+        .floating-card strong,
+        .floating-card small {
+            display: block;
+        }
+
+        .floating-card strong {
+            font-size: 16px;
+        }
+
+        .floating-card small {
+            color: #777f90;
+            font-size: 11px;
+        }
+
+        .floating-card-one {
+            left: 0;
+            bottom: 60px;
+        }
+
+        .floating-card-two {
+            right: 0;
+            top: 55px;
+        }
+
+
+        /* =========================
+           GALLERY
+        ========================== */
+
+        .gallery-section {
+            padding: 100px 0;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        .section-label {
+            color: #6c4df6;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .section-heading h2,
+        .about-content h2 {
+            font-size: clamp(32px, 5vw, 50px);
+            line-height: 1.1;
+            margin-top: 10px;
+        }
+
+        .section-heading h2 span,
+        .about-content h2 span {
+            color: #6c4df6;
+        }
+
+        .section-heading > p {
+            max-width: 400px;
+            color: #747b8c;
+        }
+
+
+        /* =========================
+           FILTER BUTTONS
+        ========================== */
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            border: 1px solid #dfe2e9;
+            background: white;
+            color: #596174;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #6c4df6;
+            border-color: #6c4df6;
+            color: white;
+        }
+
+
+        /* =========================
+           GALLERY GRID
+        ========================== */
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .gallery-item {
+            border-radius: 18px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 8px 30px rgba(30, 35, 60, 0.08);
+        }
+
+        .image-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 320px;
+        }
+
+        .image-wrapper img {
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: end;
+            padding: 22px;
+            background: linear-gradient(
+                transparent 25%,
+                rgba(0, 0, 0, 0.78)
+            );
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .gallery-item:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .overlay-content {
+            color: white;
+            transform: translateY(15px);
+            transition: 0.4s;
+        }
+
+        .gallery-item:hover .overlay-content {
+            transform: translateY(0);
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #6c4df6;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .overlay-content h3 {
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .view-image {
+            border: 0;
+            background: white;
+            color: #172033;
+            padding: 8px 13px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about-section {
+            padding: 100px 0;
+            background: #111625;
+            color: white;
+        }
+
+        .about-container {
+            max-width: 850px;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            margin-bottom: 25px;
+        }
+
+        .about-content > p {
+            color: #b9bfce;
+            margin-bottom: 15px;
+        }
+
+        .features {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .feature {
+            padding: 18px 12px;
+            border: 1px solid #2a3042;
+            border-radius: 13px;
+            background: #181e2d;
+        }
+
+        .feature span {
+            display: block;
+            color: #8d75ff;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .feature p {
+            color: #d6d9e1;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           LIGHTBOX
+        ========================== */
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            background: rgba(7, 10, 18, 0.94);
+        }
+
+        .lightbox.show {
+            display: flex;
+        }
+
+        .lightbox-content {
+            width: min(850px, 90vw);
+        }
+
+        .lightbox-content img {
+            max-height: 75vh;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .lightbox-info {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .lightbox-info span {
+            color: #9c89ff;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .lightbox-info h3 {
+            margin-top: 4px;
+            font-size: 22px;
+        }
+
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            border: 0;
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 25px;
+            transition: 0.3s;
+        }
+
+        .lightbox-close:hover,
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: #6c4df6;
+        }
+
+        .lightbox-close {
+            top: 25px;
+            right: 25px;
+        }
+
+        .lightbox-prev {
+            left: 30px;
+            top: 50%;
+        }
+
+        .lightbox-next {
+            right: 30px;
+            top: 50%;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        .footer {
+            background: #0b0e17;
+            color: white;
+            padding-top: 50px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            padding-bottom: 35px;
+        }
+
+        .footer-brand p {
+            color: #858c9e;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: #aab0be;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #202533;
+            text-align: center;
+            padding: 20px;
+            color: #737a8a;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                min-height: 430px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-heading {
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            .nav-container {
+                min-height: 65px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-button {
+                padding: 9px 13px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 65px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .hero-visual {
+                min-height: 330px;
+            }
+
+            .hero-card-main {
+                width: 85%;
+            }
+
+            .hero-card-main img {
+                height: 340px;
+            }
+
+            .floating-card {
+                padding: 10px;
+            }
+
+            .floating-card-two {
+                right: -5px;
+                top: 20px;
+            }
+
+            .floating-card-one {
+                left: -5px;
+                bottom: 25px;
+            }
+
+            .gallery-section,
+            .about-section {
+                padding: 70px 0;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-wrapper {
+                height: 330px;
+            }
+
+            .image-overlay {
+                opacity: 1;
+            }
+
+            .overlay-content {
+                transform: translateY(0);
+            }
+
+            .features {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+            }
+
+            .lightbox {
+                padding: 15px;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+            .lightbox-close {
+                top: 15px;
+                right: 15px;
+            }
+        }
+
+
+        @media (max-width: 400px) {
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-button {
+                display: none;
+            }
+
+            .image-wrapper {
+                height: 280px;
+            }
+        }
+    </style>
 </head>
+
 
 <body>
 
-    <!-- ================= HEADER ================= -->
-    <header class="site-header">
+    <!-- =========================
+         NAVBAR
+    ========================== -->
 
-        <div class="container">
+    <header class="navbar">
 
-            <!-- Logo -->
-            <a href="#" class="logo">
+        <div class="container nav-container">
+
+            <a href="#home" class="logo">
                 <span class="logo-icon">✦</span>
-                <span>PixelView</span>
+                Visual<span>Gallery</span>
             </a>
 
-            <!-- Navigation -->
-            <nav class="navbar" aria-label="Main Navigation">
-
-                <ul class="nav-list">
-
-                    <li>
-                        <a href="#home" class="nav-link active">
-                            Home
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#gallery" class="nav-link">
-                            Gallery
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#categories" class="nav-link">
-                            Categories
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#about" class="nav-link">
-                            About
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#contact" class="nav-link">
-                            Contact
-                        </a>
-                    </li>
-
-                </ul>
-
+            <nav class="nav-menu">
+                <a href="#home" class="active">Home</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#about">About</a>
             </nav>
 
-            <!-- Mobile Menu Button -->
-            <button class="menu-toggle"
-                    type="button"
-                    aria-label="Open navigation menu">
-                ☰
-            </button>
+            <a href="#gallery" class="nav-button">
+                Explore Gallery
+            </a>
 
         </div>
 
     </header>
 
 
-    <!-- ================= MAIN ================= -->
     <main>
 
-        <!-- ================= HERO SECTION ================= -->
-        <section id="home" class="hero-section">
+        <!-- =========================
+             HERO SECTION
+        ========================== -->
 
-            <div class="container hero-content">
+        <section class="hero" id="home">
 
-                <div class="hero-text">
+            <div class="container hero-container">
 
-                    <span class="hero-tag">
-                        ✦ CREATIVE PHOTOGRAPHY
+                <div class="hero-content">
+
+                    <span class="hero-badge">
+                        ✨ CODEALPHA INTERNSHIP PROJECT
                     </span>
 
                     <h1>
                         Explore the World
-                        <br>
-                        <span>Through Our Lens</span>
+                        <span>Through Images.</span>
                     </h1>
 
                     <p>
-                        Discover a curated collection of beautiful
-                        photographs capturing nature, travel, people
-                        and unforgettable moments.
+                        Discover beautiful moments, breathtaking landscapes,
+                        inspiring people and amazing places through our
+                        interactive image gallery.
                     </p>
 
                     <div class="hero-buttons">
 
-                        <a href="#gallery" class="btn btn-primary">
-                            Explore Gallery
+                        <a href="#gallery" class="primary-button">
+                            Explore Gallery →
                         </a>
 
-                        <a href="#about" class="btn btn-secondary">
+                        <a href="#about" class="secondary-button">
                             Learn More
                         </a>
 
@@ -123,12 +847,38 @@
 
                 </div>
 
-                <div class="hero-image">
 
-                    <img
-                        src="images/hero.jpg"
-                        alt="Beautiful landscape photography"
-                    >
+                <div class="hero-visual">
+
+                    <div class="hero-card-main">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85"
+                            alt="Beautiful mountain landscape">
+
+                    </div>
+
+                    <div class="floating-card floating-card-one">
+
+                        <span>📸</span>
+
+                        <div>
+                            <strong>100+</strong>
+                            <small>Beautiful Images</small>
+                        </div>
+
+                    </div>
+
+                    <div class="floating-card floating-card-two">
+
+                        <span>🌍</span>
+
+                        <div>
+                            <strong>Explore</strong>
+                            <small>New Perspectives</small>
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -137,136 +887,95 @@
         </section>
 
 
-        <!-- ================= CATEGORY SECTION ================= -->
-        <section id="categories" class="category-section">
+        <!-- =========================
+             GALLERY SECTION
+        ========================== -->
+
+        <section class="gallery-section" id="gallery">
 
             <div class="container">
 
                 <div class="section-heading">
 
-                    <span class="section-label">
-                        EXPLORE
-                    </span>
+                    <div>
 
-                    <h2>
-                        Browse By Category
-                    </h2>
+                        <span class="section-label">
+                            OUR COLLECTION
+                        </span>
+
+                        <h2>
+                            Discover Amazing
+                            <span>Moments</span>
+                        </h2>
+
+                    </div>
 
                     <p>
-                        Find your favorite photographs by exploring
-                        different categories.
+                        Browse our collection of carefully selected
+                        photographs from different categories.
                     </p>
 
                 </div>
 
 
-                <div class="category-buttons">
+                <!-- FILTER BUTTONS -->
 
-                    <button
-                        type="button"
-                        class="category-btn active"
-                        data-category="all">
-                        All Photos
+                <div class="filter-buttons">
+
+                    <button class="filter-btn active" data-filter="all">
+                        All
                     </button>
 
-                    <button
-                        type="button"
-                        class="category-btn"
-                        data-category="nature">
+                    <button class="filter-btn" data-filter="nature">
                         Nature
                     </button>
 
-                    <button
-                        type="button"
-                        class="category-btn"
-                        data-category="travel">
+                    <button class="filter-btn" data-filter="travel">
                         Travel
                     </button>
 
-                    <button
-                        type="button"
-                        class="category-btn"
-                        data-category="people">
-                        People
-                    </button>
-
-                    <button
-                        type="button"
-                        class="category-btn"
-                        data-category="architecture">
+                    <button class="filter-btn" data-filter="architecture">
                         Architecture
                     </button>
 
-                    <button
-                        type="button"
-                        class="category-btn"
-                        data-category="animals">
-                        Animals
+                    <button class="filter-btn" data-filter="people">
+                        People
                     </button>
 
                 </div>
 
-            </div>
 
-        </section>
+                <!-- GALLERY GRID -->
 
-      
-        <!-- ================= GALLERY SECTION ================= -->
-        <section id="gallery" class="gallery-section">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <span class="section-label">
-                        OUR COLLECTION
-                    </span>
-
-                    <h2>
-                        Featured Gallery
-                    </h2>
-
-                    <p>
-                        A selection of our favorite photographs
-                        from different places and moments.
-                    </p>
-
-                </div>
-
-
-                <!-- Gallery Grid -->
                 <div class="gallery-grid">
 
 
-                    <!-- Gallery Item 1 -->
-                    <article
-                        class="gallery-item"
-                        data-category="nature">
+                    <!-- IMAGE 1 -->
 
-                        <div class="image-card">
+                    <article class="gallery-item" data-category="nature">
+
+                        <div class="image-wrapper">
 
                             <img
-                                src="images/nature-1.jpg"
-                                alt="Mountain landscape surrounded by clouds"
-                                loading="lazy"
-                            >
+                                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=85"
+                                alt="Green forest surrounded by sunlight"
+                                loading="lazy">
 
                             <div class="image-overlay">
 
-                                <div class="image-info">
+                                <div class="overlay-content">
 
-                                    <span class="image-category">
+                                    <span class="category-tag">
                                         Nature
                                     </span>
 
                                     <h3>
-                                        Mountain Dreams
+                                        Into the Wild
                                     </h3>
 
                                     <button
-                                        class="view-btn"
-                                        type="button"
-                                        aria-label="View Mountain Dreams">
+                                        class="view-image"
+                                        data-index="0">
                                         View Image
                                     </button>
 
@@ -279,35 +988,32 @@
                     </article>
 
 
-                    <!-- Gallery Item 2 -->
-                    <article
-                        class="gallery-item"
-                        data-category="travel">
+                    <!-- IMAGE 2 -->
 
-                        <div class="image-card">
+                    <article class="gallery-item" data-category="travel">
+
+                        <div class="image-wrapper">
 
                             <img
-                                src="images/travel-1.jpg"
-                                alt="Beautiful road surrounded by mountains"
-                                loading="lazy"
-                            >
+                                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85"
+                                alt="Beautiful mountain landscape"
+                                loading="lazy">
 
                             <div class="image-overlay">
 
-                                <div class="image-info">
+                                <div class="overlay-content">
 
-                                    <span class="image-category">
+                                    <span class="category-tag">
                                         Travel
                                     </span>
 
                                     <h3>
-                                        The Open Road
+                                        Mountain Escape
                                     </h3>
 
                                     <button
-                                        class="view-btn"
-                                        type="button"
-                                        aria-label="View The Open Road">
+                                        class="view-image"
+                                        data-index="1">
                                         View Image
                                     </button>
 
@@ -320,75 +1026,32 @@
                     </article>
 
 
-                    <!-- Gallery Item 3 -->
-                    <article
-                        class="gallery-item"
-                        data-category="nature">
+                    <!-- IMAGE 3 -->
 
-                        <div class="image-card">
+                    <article class="gallery-item" data-category="architecture">
 
-                            <img
-                                src="images/nature-2.jpg"
-                                alt="Green forest with sunlight"
-                                loading="lazy"
-                            >
-
-                            <div class="image-overlay">
-
-                                <div class="image-info">
-
-                                    <span class="image-category">
-                                        Nature
-                                    </span>
-
-                                    <h3>
-                                        Forest Light
-                                    </h3>
-
-                                    <button
-                                        class="view-btn"
-                                        type="button"
-                                        aria-label="View Forest Light">
-                                        View Image
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-                  
-                    <!-- Gallery Item 4 -->
-                    <article
-                        class="gallery-item"
-                        data-category="architecture">
-
-                        <div class="image-card">
+                        <div class="image-wrapper">
 
                             <img
-                                src="images/architecture-1.jpg"
+                                src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1000&q=85"
                                 alt="Modern architectural building"
-                                loading="lazy"
-                            >
+                                loading="lazy">
 
                             <div class="image-overlay">
 
-                                <div class="image-info">
+                                <div class="overlay-content">
 
-                                    <span class="image-category">
+                                    <span class="category-tag">
                                         Architecture
                                     </span>
 
                                     <h3>
-                                        Modern Lines
+                                        Modern Design
                                     </h3>
 
                                     <button
-                                        class="view-btn"
-                                        type="button"
-                                        aria-label="View Modern Lines">
+                                        class="view-image"
+                                        data-index="2">
                                         View Image
                                     </button>
 
@@ -401,157 +1064,32 @@
                     </article>
 
 
-                    <!-- Gallery Item 5 -->
-                    <article
-                        class="gallery-item"
-                        data-category="people">
+                    <!-- IMAGE 4 -->
 
-                        <div class="image-card">
+                    <article class="gallery-item" data-category="nature">
+
+                        <div class="image-wrapper">
 
                             <img
-                                src="images/people-1.jpg"
-                                alt="Person enjoying a beautiful sunset"
-                                loading="lazy"
-                            >
+                                src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1000&q=85"
+                                alt="Beautiful green mountains"
+                                loading="lazy">
 
                             <div class="image-overlay">
 
-                                <div class="image-info">
+                                <div class="overlay-content">
 
-                                    <span class="image-category">
-                                        People
-                                    </span>
-
-                                    <h3>
-                                        Golden Moment
-                                    </h3>
-
-                                    <button
-                                        class="view-btn"
-                                        type="button"
-                                        aria-label="View Golden Moment">
-                                        View Image
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Gallery Item 6 -->
-                    <article
-                        class="gallery-item"
-                        data-category="animals">
-
-                        <div class="image-card">
-
-                            <img
-                                src="images/animal-1.jpg"
-                                alt="Wild animal in its natural environment"
-                                loading="lazy"
-                            >
-
-                            <div class="image-overlay">
-
-                                <div class="image-info">
-
-                                    <span class="image-category">
-                                        Animals
-                                    </span>
-
-                                    <h3>
-                                        Into The Wild
-                                    </h3>
-
-                                    <button
-                                        class="view-btn"
-                                        type="button"
-                                        aria-label="View Into The Wild">
-                                        View Image
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Gallery Item 7 -->
-                    <article
-                        class="gallery-item"
-                        data-category="travel">
-
-                        <div class="image-card">
-
-                            <img
-                                src="images/travel-2.jpg"
-                                alt="Beautiful beach and ocean view"
-                                loading="lazy"
-                            >
-
-                            <div class="image-overlay">
-
-                                <div class="image-info">
-
-                                    <span class="image-category">
-                                        Travel
-                                    </span>
-
-                                    <h3>
-                                        Ocean Escape
-                                    </h3>
-
-                                    <button
-                                        class="view-btn"
-                                        type="button"
-                                        aria-label="View Ocean Escape">
-                                        View Image
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-                  
-                    <!-- Gallery Item 8 -->
-                    <article
-                        class="gallery-item"
-                        data-category="nature">
-
-                        <div class="image-card">
-
-                            <img
-                                src="images/nature-3.jpg"
-                                alt="Waterfall surrounded by green nature"
-                                loading="lazy"
-                            >
-
-                            <div class="image-overlay">
-
-                                <div class="image-info">
-
-                                    <span class="image-category">
+                                    <span class="category-tag">
                                         Nature
                                     </span>
 
                                     <h3>
-                                        Hidden Waterfall
+                                        Green Valley
                                     </h3>
 
                                     <button
-                                        class="view-btn"
-                                        type="button"
-                                        aria-label="View Hidden Waterfall">
+                                        class="view-image"
+                                        data-index="3">
                                         View Image
                                     </button>
 
@@ -564,6 +1102,195 @@
                     </article>
 
 
+                    <!-- IMAGE 5 -->
+
+                    <article class="gallery-item" data-category="people">
+
+                        <div class="image-wrapper">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=85"
+                                alt="Portrait of a person"
+                                loading="lazy">
+
+                            <div class="image-overlay">
+
+                                <div class="overlay-content">
+
+                                    <span class="category-tag">
+                                        People
+                                    </span>
+
+                                    <h3>
+                                        Human Stories
+                                    </h3>
+
+                                    <button
+                                        class="view-image"
+                                        data-index="4">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- IMAGE 6 -->
+
+                    <article class="gallery-item" data-category="travel">
+
+                        <div class="image-wrapper">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=85"
+                                alt="Beautiful tropical beach"
+                                loading="lazy">
+
+                            <div class="image-overlay">
+
+                                <div class="overlay-content">
+
+                                    <span class="category-tag">
+                                        Travel
+                                    </span>
+
+                                    <h3>
+                                        Ocean Dreams
+                                    </h3>
+
+                                    <button
+                                        class="view-image"
+                                        data-index="5">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- IMAGE 7 -->
+
+                    <article class="gallery-item" data-category="architecture">
+
+                        <div class="image-wrapper">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85"
+                                alt="Modern office interior"
+                                loading="lazy">
+
+                            <div class="image-overlay">
+
+                                <div class="overlay-content">
+
+                                    <span class="category-tag">
+                                        Architecture
+                                    </span>
+
+                                    <h3>
+                                        Creative Space
+                                    </h3>
+
+                                    <button
+                                        class="view-image"
+                                        data-index="6">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- IMAGE 8 -->
+
+                    <article class="gallery-item" data-category="nature">
+
+                        <div class="image-wrapper">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=85"
+                                alt="Mountain landscape with lake"
+                                loading="lazy">
+
+                            <div class="image-overlay">
+
+                                <div class="overlay-content">
+
+                                    <span class="category-tag">
+                                        Nature
+                                    </span>
+
+                                    <h3>
+                                        Silent Mountains
+                                    </h3>
+
+                                    <button
+                                        class="view-image"
+                                        data-index="7">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- IMAGE 9 -->
+
+                    <article class="gallery-item" data-category="travel">
+
+                        <div class="image-wrapper">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1000&q=85"
+                                alt="Beautiful landscape during sunset"
+                                loading="lazy">
+
+                            <div class="image-overlay">
+
+                                <div class="overlay-content">
+
+                                    <span class="category-tag">
+                                        Travel
+                                    </span>
+
+                                    <h3>
+                                        Golden Journey
+                                    </h3>
+
+                                    <button
+                                        class="view-image"
+                                        data-index="8">
+                                        View Image
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
                 </div>
 
             </div>
@@ -571,198 +1298,64 @@
         </section>
 
 
-        <!-- ================= LIGHTBOX ================= -->
-        <div
-            id="lightbox"
-            class="lightbox"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Image preview"
-            hidden>
+        <!-- =========================
+             ABOUT SECTION
+        ========================== -->
 
-            <button
-                type="button"
-                class="lightbox-close"
-                aria-label="Close image preview">
-                &times;
-            </button>
+        <section class="about-section" id="about">
 
-            <button
-                type="button"
-                class="lightbox-prev"
-                aria-label="Previous image">
-                &#10094;
-            </button>
-
-            <div class="lightbox-content">
-
-                <img
-                    id="lightbox-image"
-                    src=""
-                    alt="">
-
-                <div class="lightbox-caption">
-
-                    <h3 id="lightbox-title">
-                        Image Title
-                    </h3>
-
-                    <p id="lightbox-category">
-                        Category
-                    </p>
-
-                </div>
-
-            </div>
-
-            <button
-                type="button"
-                class="lightbox-next"
-                aria-label="Next image">
-                &#10095;
-            </button>
-
-        </div>
-
-
-        <!-- ================= ABOUT SECTION ================= -->
-        <section id="about" class="about-section">
-
-            <div class="container">
+            <div class="container about-container">
 
                 <div class="about-content">
 
-                    <div class="about-image">
-
-                        <img
-                            src="images/about.jpg"
-                            alt="Photographer capturing a beautiful landscape"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-
-                    <div class="about-text">
-
-                        <span class="section-label">
-                            ABOUT PIXELVIEW
-                        </span>
-
-                        <h2>
-                            Capturing Moments,
-                            Creating Memories
-                        </h2>
-
-                        <p>
-                            PixelView is a creative image gallery
-                            dedicated to showcasing inspiring
-                            photographs from around the world.
-                        </p>
-
-                        <p>
-                            From peaceful landscapes to exciting
-                            travel destinations, every photograph
-                            tells a unique story.
-                        </p>
-
-                        <a href="#contact" class="btn btn-primary">
-                            Get In Touch
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-      
-              <!-- ================= CONTACT SECTION ================= -->
-        <section id="contact" class="contact-section">
-
-            <div class="container">
-
-                <div class="section-heading">
-
                     <span class="section-label">
-                        CONTACT
+                        ABOUT THE PROJECT
                     </span>
 
                     <h2>
-                        Let's Connect
+                        More Than Just
+                        <span>Pictures.</span>
                     </h2>
 
                     <p>
-                        Have a question or want to collaborate?
-                        Send us a message.
+                        Visual Gallery is a responsive image gallery project
+                        developed as part of the CodeAlpha Frontend
+                        Development Internship.
                     </p>
 
+                    <p>
+                        The project demonstrates modern frontend development
+                        concepts including responsive layouts, interactive
+                        JavaScript functionality, image filtering, hover
+                        effects and lightbox navigation.
+                    </p>
+
+
+                    <div class="features">
+
+                        <div class="feature">
+                            <span>✓</span>
+                            <p>Responsive Design</p>
+                        </div>
+
+                        <div class="feature">
+                            <span>✓</span>
+                            <p>Interactive Gallery</p>
+                        </div>
+
+                        <div class="feature">
+                            <span>✓</span>
+                            <p>Image Categories</p>
+                        </div>
+
+                        <div class="feature">
+                            <span>✓</span>
+                            <p>Lightbox Navigation</p>
+                        </div>
+
+                    </div>
+
                 </div>
-
-
-                <form
-                    class="contact-form"
-                    action="#"
-                    method="post">
-
-                    <div class="form-group">
-
-                        <label for="name">
-                            Your Name
-                        </label>
-
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="Enter your name"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="email">
-                            Email Address
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Enter your email"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="message">
-                            Message
-                        </label>
-
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="6"
-                            placeholder="Write your message..."
-                            required></textarea>
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary">
-                        Send Message
-                    </button>
-
-                </form>
 
             </div>
 
@@ -771,115 +1364,376 @@
     </main>
 
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="site-footer">
+    <!-- =========================
+         LIGHTBOX
+    ========================== -->
 
-        <div class="container">
+    <div class="lightbox" id="lightbox">
 
-            <div class="footer-content">
+        <button
+            class="lightbox-close"
+            id="closeLightbox"
+            aria-label="Close">
+            &times;
+        </button>
 
-                <div class="footer-brand">
-
-                    <a href="#home" class="logo">
-                        <span class="logo-icon">✦</span>
-                        <span>PixelView</span>
-                    </a>
-
-                    <p>
-                        Capturing beautiful moments,
-                        one photograph at a time.
-                    </p>
-
-                </div>
-
-
-                <div class="footer-links">
-
-                    <h3>
-                        Quick Links
-                    </h3>
-
-                    <ul>
-
-                        <li>
-                            <a href="#home">
-                                Home
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#gallery">
-                                Gallery
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#about">
-                                About
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#contact">
-                                Contact
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
+        <button
+            class="lightbox-prev"
+            id="prevImage"
+            aria-label="Previous image">
+            &#10094;
+        </button>
 
 
-                <div class="footer-social">
+        <div class="lightbox-content">
 
-                    <h3>
-                        Follow Us
-                    </h3>
+            <img
+                id="lightboxImage"
+                src=""
+                alt="Gallery preview">
 
-                    <div class="social-links">
+            <div class="lightbox-info">
 
-                        <a href="#" aria-label="Instagram">
-                            Instagram
-                        </a>
+                <span id="lightboxCategory">
+                    Category
+                </span>
 
-                        <a href="#" aria-label="Facebook">
-                            Facebook
-                        </a>
-
-                        <a href="#" aria-label="GitHub">
-                            GitHub
-                        </a>
-
-                        <a href="#" aria-label="LinkedIn">
-                            LinkedIn
-                        </a>
-
-                    </div>
-
-                </div>
+                <h3 id="lightboxTitle">
+                    Image Title
+                </h3>
 
             </div>
 
+        </div>
 
-            <div class="footer-bottom">
+
+        <button
+            class="lightbox-next"
+            id="nextImage"
+            aria-label="Next image">
+            &#10095;
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a href="#home" class="logo">
+                    <span class="logo-icon">✦</span>
+                    Visual<span>Gallery</span>
+                </a>
 
                 <p>
-                    &copy; 2026 PixelView. All Rights Reserved.
-                </p>
-
-                <p>
-                    Designed & Developed with HTML, CSS & JavaScript
+                    Capturing moments. Creating memories.
                 </p>
 
             </div>
+
+
+            <div class="footer-links">
+
+                <a href="#home">Home</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#about">About</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; 2026 Visual Gallery.
+                Built for CodeAlpha Internship.
+            </p>
 
         </div>
 
     </footer>
 
 
-    <!-- JavaScript File -->
-    <script src="script.js"></script>
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        // Gallery data
+
+        const galleryData = [
+
+            {
+                image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+                title: "Into the Wild",
+                category: "Nature"
+            },
+
+            {
+                image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=90",
+                title: "Mountain Escape",
+                category: "Travel"
+            },
+
+            {
+                image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=90",
+                title: "Modern Design",
+                category: "Architecture"
+            },
+
+            {
+                image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1200&q=90",
+                title: "Green Valley",
+                category: "Nature"
+            },
+
+            {
+                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=90",
+                title: "Human Stories",
+                category: "People"
+            },
+
+            {
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90",
+                title: "Ocean Dreams",
+                category: "Travel"
+            },
+
+            {
+                image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=90",
+                title: "Creative Space",
+                category: "Architecture"
+            },
+
+            {
+                image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=90",
+                title: "Silent Mountains",
+                category: "Nature"
+            },
+
+            {
+                image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=90",
+                title: "Golden Journey",
+                category: "Travel"
+            }
+
+        ];
+
+
+        // =========================
+        // FILTER SYSTEM
+        // =========================
+
+        const filterButtons =
+            document.querySelectorAll(".filter-btn");
+
+        const galleryItems =
+            document.querySelectorAll(".gallery-item");
+
+
+        filterButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                filterButtons.forEach(btn => {
+                    btn.classList.remove("active");
+                });
+
+                button.classList.add("active");
+
+                const filter =
+                    button.getAttribute("data-filter");
+
+
+                galleryItems.forEach(item => {
+
+                    const category =
+                        item.getAttribute("data-category");
+
+                    if (
+                        filter === "all" ||
+                        category === filter
+                    ) {
+
+                        item.style.display = "block";
+
+                    } else {
+
+                        item.style.display = "none";
+
+                    }
+
+                });
+
+            });
+
+        });
+
+
+        // =========================
+        // LIGHTBOX
+        // =========================
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        const lightboxImage =
+            document.getElementById("lightboxImage");
+
+        const lightboxTitle =
+            document.getElementById("lightboxTitle");
+
+        const lightboxCategory =
+            document.getElementById("lightboxCategory");
+
+        const closeLightbox =
+            document.getElementById("closeLightbox");
+
+        const prevImage =
+            document.getElementById("prevImage");
+
+        const nextImage =
+            document.getElementById("nextImage");
+
+        const viewButtons =
+            document.querySelectorAll(".view-image");
+
+
+        let currentIndex = 0;
+
+
+        function openLightbox(index) {
+
+            currentIndex = index;
+
+            const item =
+                galleryData[currentIndex];
+
+            lightboxImage.src = item.image;
+            lightboxImage.alt = item.title;
+
+            lightboxTitle.textContent =
+                item.title;
+
+            lightboxCategory.textContent =
+                item.category;
+
+            lightbox.classList.add("show");
+
+            document.body.style.overflow = "hidden";
+        }
+
+
+        function closeViewer() {
+
+            lightbox.classList.remove("show");
+
+            document.body.style.overflow = "auto";
+        }
+
+
+        function showNextImage() {
+
+            currentIndex++;
+
+            if (currentIndex >= galleryData.length) {
+                currentIndex = 0;
+            }
+
+            openLightbox(currentIndex);
+        }
+
+
+        function showPreviousImage() {
+
+            currentIndex--;
+
+            if (currentIndex < 0) {
+                currentIndex = galleryData.length - 1;
+            }
+
+            openLightbox(currentIndex);
+        }
+
+
+        viewButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const index =
+                    Number(button.getAttribute("data-index"));
+
+                openLightbox(index);
+
+            });
+
+        });
+
+
+        closeLightbox.addEventListener(
+            "click",
+            closeViewer
+        );
+
+
+        nextImage.addEventListener(
+            "click",
+            showNextImage
+        );
+
+
+        prevImage.addEventListener(
+            "click",
+            showPreviousImage
+        );
+
+
+        // Close when clicking outside image
+
+        lightbox.addEventListener("click", event => {
+
+            if (event.target === lightbox) {
+                closeViewer();
+            }
+
+        });
+
+
+        // =========================
+        // KEYBOARD SUPPORT
+        // =========================
+
+        document.addEventListener("keydown", event => {
+
+            if (!lightbox.classList.contains("show")) {
+                return;
+            }
+
+            if (event.key === "Escape") {
+                closeViewer();
+            }
+
+            if (event.key === "ArrowRight") {
+                showNextImage();
+            }
+
+            if (event.key === "ArrowLeft") {
+                showPreviousImage();
+            }
+
+        });
+
+    </script>
 
 </body>
-  </html>
+</html>
+```
