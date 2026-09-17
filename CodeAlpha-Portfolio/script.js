@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================================
+    /* =========================
        CURRENT YEAR
-    ========================================= */
+    ========================== */
 
     const currentYear = document.getElementById("currentYear");
 
@@ -11,19 +11,96 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================
-       SMOOTH NAVIGATION
-    ========================================= */
+    /* =========================
+       MOBILE MENU
+    ========================== */
 
-    const navLinks = document.querySelectorAll(
-        '.nav-links a[href^="#"]'
-    );
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinksMenu = document.getElementById("navLinks");
+
+    if (menuToggle && navLinksMenu) {
+
+        menuToggle.addEventListener("click", () => {
+
+            navLinksMenu.classList.toggle("active");
+
+            const isOpen =
+                navLinksMenu.classList.contains("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+
+            const icon = menuToggle.querySelector("i");
+
+            if (isOpen) {
+
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-xmark");
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Close navigation menu"
+                );
+
+            } else {
+
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation menu"
+                );
+            }
+
+        });
+
+
+        /* Close menu when any option is clicked */
+
+        navLinksMenu.querySelectorAll("a").forEach((link) => {
+
+            link.addEventListener("click", () => {
+
+                navLinksMenu.classList.remove("active");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                const icon = menuToggle.querySelector("i");
+
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation menu"
+                );
+
+            });
+
+        });
+
+    }
+
+
+    /* =========================
+       SMOOTH NAVIGATION
+    ========================== */
+
+    const navLinks =
+        document.querySelectorAll('.nav-links a[href^="#"]');
 
     navLinks.forEach((link) => {
 
         link.addEventListener("click", (event) => {
 
-            const targetId = link.getAttribute("href");
+            const targetId =
+                link.getAttribute("href");
 
             if (!targetId || targetId === "#") {
                 return;
@@ -36,7 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 event.preventDefault();
 
-                const navbarHeight = 75;
+                const navbar =
+                    document.querySelector(".navbar");
+
+                const navbarHeight =
+                    navbar ? navbar.offsetHeight : 75;
 
                 const targetPosition =
                     targetSection.offsetTop - navbarHeight;
@@ -45,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     top: targetPosition,
                     behavior: "smooth"
                 });
+
             }
 
         });
@@ -52,11 +134,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =========================================
+    /* =========================
        NAVBAR SCROLL EFFECT
-    ========================================= */
+    ========================== */
 
-    const navbar = document.querySelector(".navbar");
+    const navbar =
+        document.querySelector(".navbar");
 
     function handleNavbar() {
 
@@ -76,20 +159,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    window.addEventListener("scroll", handleNavbar);
+    window.addEventListener(
+        "scroll",
+        handleNavbar
+    );
 
     handleNavbar();
 
 
-    /* =========================================
-       ACTIVE NAVIGATION LINK
-    ========================================= */
+    /* =========================
+       ACTIVE NAV LINK
+    ========================== */
 
     const sections =
         document.querySelectorAll("section[id]");
 
     const links =
         document.querySelectorAll(".nav-links a");
+
 
     function updateActiveLink() {
 
@@ -124,7 +211,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.getAttribute("href");
 
             if (
-                linkTarget === "#" + currentSection
+                linkTarget ===
+                "#" + currentSection
             ) {
 
                 link.classList.add("active");
@@ -135,6 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
     window.addEventListener(
         "scroll",
         updateActiveLink
@@ -143,9 +232,9 @@ document.addEventListener("DOMContentLoaded", () => {
     updateActiveLink();
 
 
-    /* =========================================
-       SCROLL REVEAL ANIMATION
-    ========================================= */
+    /* =========================
+       REVEAL ANIMATION
+    ========================== */
 
     const revealElements =
         document.querySelectorAll(
@@ -160,9 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     revealElements.forEach((element) => {
-
         element.classList.add("reveal");
-
     });
 
 
@@ -200,13 +287,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =========================================
+    /* =========================
        TYPING EFFECT
-    ========================================= */
+    ========================== */
 
     const typingText =
         document.querySelector(".typing-text");
-
 
     if (typingText) {
 
@@ -218,9 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ];
 
         let wordIndex = 0;
-
         let characterIndex = 0;
-
         let isDeleting = false;
 
 
@@ -254,7 +338,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
                     return;
-
                 }
 
             } else {
@@ -291,7 +374,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const typingSpeed =
                 isDeleting ? 45 : 85;
 
-
             setTimeout(
                 typeText,
                 typingSpeed
@@ -305,9 +387,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================
-       PROJECT CARD HOVER
-    ========================================= */
+    /* =========================
+       PROJECT HOVER
+    ========================== */
 
     const projectCards =
         document.querySelectorAll(".project-card");
@@ -318,9 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card.addEventListener(
             "mouseenter",
             () => {
-
                 card.classList.add("hovered");
-
             }
         );
 
@@ -328,18 +408,16 @@ document.addEventListener("DOMContentLoaded", () => {
         card.addEventListener(
             "mouseleave",
             () => {
-
                 card.classList.remove("hovered");
-
             }
         );
 
     });
 
 
-    /* =========================================
-       EXTERNAL LINKS SECURITY
-    ========================================= */
+    /* =========================
+       EXTERNAL LINKS
+    ========================== */
 
     const externalLinks =
         document.querySelectorAll(
@@ -357,9 +435,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =========================================
-       CONSOLE MESSAGE
-    ========================================= */
+    /* =========================
+       CONSOLE
+    ========================== */
 
     console.log(
         "Kanhaiya Mishra Portfolio Loaded Successfully!"
