@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="Kanhaiya Mishra - Frontend Developer, AI Web Developer and aspiring Full Stack Developer Portfolio">
-
     <title>Kanhaiya Mishra | Frontend & AI Web Developer</title>
+
+    <meta name="description"
+        content="Kanhaiya Mishra - Frontend Developer and AI Web Developer Portfolio">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
+    <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- CSS -->
@@ -29,53 +27,82 @@
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- =========================
+         NAVBAR
+    ========================== -->
 
     <header class="navbar">
 
-        <div class="container nav-container">
+        <div class="nav-container">
 
+            <!-- Logo -->
             <a href="#home" class="logo">
                 KM<span>.</span>
             </a>
 
-            <nav class="nav-links">
+            <!-- Navigation -->
+            <nav class="nav-links" id="navLinks">
 
                 <a href="#home" class="active">Home</a>
+
                 <a href="#about">About</a>
+
                 <a href="#skills">Skills</a>
+
                 <a href="#experience">Experience</a>
+
                 <a href="#projects">Projects</a>
+
                 <a href="#resume">Resume</a>
+
                 <a href="#contact">Contact</a>
+
+                <!-- Mobile Let's Talk -->
+                <a href="#contact" class="mobile-talk">
+                    Let's Talk
+                </a>
 
             </nav>
 
-            <a href="#contact" class="nav-button">
+            <!-- Desktop Let's Talk -->
+            <a href="#contact" class="nav-talk">
                 Let's Talk
             </a>
+
+            <!-- Mobile Menu Button -->
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
 
         </div>
 
     </header>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- =========================
+         HERO
+    ========================== -->
 
     <main>
 
-        <section id="home" class="hero">
+        <section class="hero" id="home">
 
-            <div class="container hero-grid">
+            <div class="hero-container">
 
                 <div class="hero-content">
 
                     <div class="availability">
-                        <span></span>
+                        <span class="availability-dot"></span>
                         Available for opportunities
                     </div>
 
-                    <p class="hero-small-title">
+                    <p class="hello-text">
                         HELLO, I'M
                     </p>
 
@@ -84,26 +111,32 @@
                         <span>Mishra</span>
                     </h1>
 
-                    <h2>
-                        <span class="typing-text">Frontend Developer</span>
+                    <h2 class="hero-role">
+                        <span class="typing-text">
+                            Frontend Developer
+                        </span>
                     </h2>
 
                     <p class="hero-description">
-                        I create modern, responsive and user-friendly websites
-                        with a strong interest in AI-powered web development
-                        and full stack technologies.
+                        I build modern, responsive and user-friendly websites
+                        using modern web technologies. I also explore AI-powered
+                        web development and full stack technologies.
                     </p>
 
                     <div class="hero-buttons">
 
-                        <a href="#projects" class="primary-btn">
+                        <a href="#projects" class="btn primary-btn">
                             View My Work
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
 
-                        <a href="resume.pdf" target="_blank" class="secondary-btn">
-                            <i class="fa-regular fa-file-lines"></i>
+                        <a href="resume.pdf"
+                           target="_blank"
+                           class="btn secondary-btn">
+
                             View Resume
+                            <i class="fa-regular fa-file-lines"></i>
+
                         </a>
 
                     </div>
@@ -111,13 +144,19 @@
                     <div class="social-links">
 
                         <a href="https://github.com/kanhaiyamm55-cmd"
-                            target="_blank" aria-label="GitHub">
+                           target="_blank"
+                           aria-label="GitHub">
+
                             <i class="fa-brands fa-github"></i>
+
                         </a>
 
                         <a href="https://www.linkedin.com/in/kanhaiya-mishra-147518372"
-                            target="_blank" aria-label="LinkedIn">
+                           target="_blank"
+                           aria-label="LinkedIn">
+
                             <i class="fa-brands fa-linkedin-in"></i>
+
                         </a>
 
                     </div>
@@ -126,48 +165,41 @@
 
 
                 <!-- Hero Image -->
-
                 <div class="hero-image-area">
 
-                    <div class="hero-circle"></div>
+                    <div class="hero-image-card">
 
-                    <div class="profile-card">
+                        <div class="hero-image-glow"></div>
 
-                        <div class="profile-image">
-                            <img src="image.jpeg"
-                                alt="Kanhaiya Mishra">
-                        </div>
-
-                        <div class="profile-card-content">
-
-                            <strong>Kanhaiya Mishra</strong>
-
-                            <span>Frontend & AI Web Developer</span>
-
-                        </div>
+                        <img
+                            src="image.jpeg"
+                            alt="Kanhaiya Mishra">
 
                     </div>
 
+                    <div class="floating-card card-one">
 
-                    <div class="floating-card card-code">
-
-                        <i class="fa-solid fa-code"></i>
+                        <div class="floating-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
 
                         <div>
                             <strong>Web Development</strong>
-                            <span>HTML • CSS • JS</span>
+                            <span>Modern & Responsive</span>
                         </div>
 
                     </div>
 
 
-                    <div class="floating-card card-ai">
+                    <div class="floating-card card-two">
 
-                        <i class="fa-solid fa-robot"></i>
+                        <div class="floating-icon">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
 
                         <div>
                             <strong>AI Web Development</strong>
-                            <span>Building with AI</span>
+                            <span>AI Powered Solutions</span>
                         </div>
 
                     </div>
@@ -179,24 +211,28 @@
         </section>
 
 
-        <!-- ================= ABOUT ================= -->
+        <!-- =========================
+             ABOUT
+        ========================== -->
 
-        <section id="about" class="section about-section">
+        <section class="section about-section" id="about">
 
             <div class="container">
 
                 <div class="section-heading">
 
-                    <span>ABOUT ME</span>
+                    <span class="section-label">
+                        ABOUT ME
+                    </span>
 
                     <h2>
-                        Turning ideas into
-                        <strong>digital experiences.</strong>
+                        Building digital experiences
+                        <span>that matter.</span>
                     </h2>
 
                     <p>
-                        A passionate BCA student focused on web development,
-                        modern UI design and AI-powered web technologies.
+                        A passionate developer focused on creating clean,
+                        responsive and meaningful web experiences.
                     </p>
 
                 </div>
@@ -208,7 +244,8 @@
 
                         <div class="about-image-box">
 
-                            <img src="image.jpeg"
+                            <img
+                                src="image.jpeg"
                                 alt="Kanhaiya Mishra">
 
                         </div>
@@ -216,7 +253,12 @@
                         <div class="experience-badge">
 
                             <strong>1+</strong>
-                            <span>Internship<br>Experience</span>
+
+                            <span>
+                                Internship
+                                <br>
+                                Experience
+                            </span>
 
                         </div>
 
@@ -226,36 +268,43 @@
                     <div class="about-content">
 
                         <h3>
-                            Building websites that are
-                            <span>clean, responsive & useful.</span>
+                            Hello! I'm Kanhaiya.
                         </h3>
 
                         <p>
                             I am a BCA student and aspiring Full Stack Developer
-                            who enjoys creating professional websites and
-                            interactive web applications.
+                            with a strong interest in frontend development,
+                            AI-powered websites and modern web technologies.
                         </p>
 
                         <p>
-                            I have worked on frontend projects using HTML,
-                            CSS and JavaScript and have also explored
-                            AI Web Development, WordPress, Wix and modern
-                            web development tools.
+                            I enjoy transforming ideas into professional,
+                            responsive and user-friendly digital experiences.
+                            I continuously improve my skills by building
+                            real-world projects.
                         </p>
 
 
-                        <div class="about-highlights">
+                        <div class="about-info">
 
                             <div>
-                                <i class="fa-solid fa-laptop-code"></i>
-                                <strong>Web Development</strong>
-                                <span>Modern responsive websites</span>
+                                <span>Name</span>
+                                <strong>Kanhaiya Mishra</strong>
                             </div>
 
                             <div>
-                                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                                <strong>AI Web Development</strong>
-                                <span>AI-assisted digital solutions</span>
+                                <span>Education</span>
+                                <strong>BCA</strong>
+                            </div>
+
+                            <div>
+                                <span>Focus</span>
+                                <strong>Full Stack Development</strong>
+                            </div>
+
+                            <div>
+                                <span>Interest</span>
+                                <strong>AI & Web Development</strong>
                             </div>
 
                         </div>
@@ -269,24 +318,28 @@
         </section>
 
 
-        <!-- ================= SKILLS ================= -->
+        <!-- =========================
+             SKILLS
+        ========================== -->
 
-        <section id="skills" class="section skills-section">
+        <section class="section skills-section" id="skills">
 
             <div class="container">
 
-                <div class="section-heading center">
+                <div class="section-heading">
 
-                    <span>MY SKILLS</span>
+                    <span class="section-label">
+                        MY SKILLS
+                    </span>
 
                     <h2>
                         Technologies I
-                        <strong>work with.</strong>
+                        <span>work with.</span>
                     </h2>
 
                     <p>
-                        A growing technical toolkit focused on frontend,
-                        backend and modern web development.
+                        Technologies and tools I use to build modern web
+                        experiences.
                     </p>
 
                 </div>
@@ -303,7 +356,7 @@
                     <div class="skill-card">
                         <i class="fa-brands fa-css3-alt"></i>
                         <h3>CSS3</h3>
-                        <p>Responsive UI & modern styling</p>
+                        <p>Responsive & modern UI design</p>
                     </div>
 
                     <div class="skill-card">
@@ -315,19 +368,19 @@
                     <div class="skill-card">
                         <i class="fa-brands fa-react"></i>
                         <h3>React.js</h3>
-                        <p>Component-based interfaces</p>
+                        <p>Component-based web interfaces</p>
                     </div>
 
                     <div class="skill-card">
                         <i class="fa-brands fa-node-js"></i>
                         <h3>Node.js</h3>
-                        <p>Backend & server-side basics</p>
+                        <p>Backend & server-side development</p>
                     </div>
 
                     <div class="skill-card">
                         <i class="fa-solid fa-database"></i>
                         <h3>MySQL</h3>
-                        <p>Database & SQL fundamentals</p>
+                        <p>Database management & queries</p>
                     </div>
 
                     <div class="skill-card">
@@ -339,19 +392,19 @@
                     <div class="skill-card">
                         <i class="fa-brands fa-wordpress"></i>
                         <h3>WordPress</h3>
-                        <p>Website building & customization</p>
+                        <p>Website creation & customization</p>
                     </div>
 
                     <div class="skill-card">
                         <i class="fa-solid fa-robot"></i>
                         <h3>AI / GenAI</h3>
-                        <p>AI-powered web concepts</p>
+                        <p>AI-powered web development</p>
                     </div>
 
                     <div class="skill-card">
-                        <i class="fa-solid fa-mobile-screen"></i>
+                        <i class="fa-solid fa-mobile-screen-button"></i>
                         <h3>Responsive Design</h3>
-                        <p>Mobile, tablet & desktop UI</p>
+                        <p>Mobile, tablet & desktop layouts</p>
                     </div>
 
                 </div>
@@ -361,19 +414,23 @@
         </section>
 
 
-        <!-- ================= EXPERIENCE ================= -->
+        <!-- =========================
+             EXPERIENCE
+        ========================== -->
 
-        <section id="experience" class="section experience-section">
+        <section class="section experience-section" id="experience">
 
             <div class="container">
 
-                <div class="section-heading center">
+                <div class="section-heading">
 
-                    <span>EXPERIENCE</span>
+                    <span class="section-label">
+                        EXPERIENCE
+                    </span>
 
                     <h2>
                         My professional
-                        <strong>journey.</strong>
+                        <span>journey.</span>
                     </h2>
 
                 </div>
@@ -382,7 +439,7 @@
                 <div class="experience-card">
 
                     <div class="experience-icon">
-                        <i class="fa-solid fa-briefcase"></i>
+                        <i class="fa-solid fa-robot"></i>
                     </div>
 
                     <div class="experience-content">
@@ -390,6 +447,7 @@
                         <div class="experience-top">
 
                             <div>
+
                                 <span class="experience-date">
                                     1 MONTH INTERNSHIP
                                 </span>
@@ -401,27 +459,29 @@
                                 <h4>
                                     InAmigos Foundation
                                 </h4>
+
                             </div>
 
-                            <span class="current-badge">
+                            <span class="experience-status">
                                 Internship
                             </span>
 
                         </div>
 
                         <p>
-                            Worked on web development and AI web development
-                            activities including responsive interfaces,
-                            website improvement analysis, content presentation
-                            and modern web design.
+                            Worked on AI-powered website development,
+                            website improvement analysis and modern
+                            web development tasks. Created responsive
+                            web experiences and explored AI website
+                            generation tools.
                         </p>
 
                         <div class="experience-tags">
 
-                            <span>Web Development</span>
-                            <span>AI</span>
+                            <span>AI Web Development</span>
+                            <span>Web Design</span>
                             <span>Responsive Design</span>
-                            <span>UI/UX</span>
+                            <span>AI Tools</span>
 
                         </div>
 
@@ -434,23 +494,27 @@
         </section>
 
 
-        <!-- ================= PROJECTS ================= -->
+        <!-- =========================
+             PROJECTS
+        ========================== -->
 
-        <section id="projects" class="section projects-section">
+        <section class="section projects-section" id="projects">
 
             <div class="container">
 
                 <div class="section-heading">
 
-                    <span>MY PROJECTS</span>
+                    <span class="section-label">
+                        MY PROJECTS
+                    </span>
 
                     <h2>
-                        Projects I've
-                        <strong>built.</strong>
+                        Some things I've
+                        <span>built.</span>
                     </h2>
 
                     <p>
-                        A selection of my web development, AI and internship
+                        A selection of my web development and frontend
                         projects.
                     </p>
 
@@ -460,39 +524,47 @@
                 <div class="projects-grid">
 
 
-                    <!-- PROJECT 1 -->
-
+                    <!-- Project 1 -->
                     <article class="project-card">
 
-                        <div class="project-image project-one">
+                        <div class="project-thumbnail project-one">
 
-                            <i class="fa-solid fa-robot"></i>
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
 
-                            <span>NOVA AI</span>
+                            <span>AI PROJECT</span>
 
                         </div>
 
                         <div class="project-content">
 
-                            <span class="project-number">01</span>
+                            <span class="project-number">
+                                01
+                            </span>
 
-                            <h3>NOVA AI Productivity Platform</h3>
+                            <h3>
+                                NOVA AI Productivity Platform
+                            </h3>
 
                             <p>
-                                A modern AI productivity landing page
-                                with a professional SaaS-style interface.
+                                Modern AI productivity platform landing
+                                page with a professional responsive UI.
                             </p>
 
-                            <div class="project-tags">
+                            <div class="project-tech">
                                 <span>HTML</span>
                                 <span>CSS</span>
+                                <span>JavaScript</span>
                                 <span>AI</span>
                             </div>
 
-                            <a href="https://kanhaiyamm55-cmd.github.io/NOVA-AI-Productivity-Landing-Page/"
-                                target="_blank" class="project-link">
+                            <a
+                                href="https://kanhaiyamm55-cmd.github.io/NOVA-AI-Productivity-Landing-Page/"
+                                target="_blank"
+                                class="project-link">
+
                                 View Project
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
                             </a>
 
                         </div>
@@ -500,39 +572,46 @@
                     </article>
 
 
-                    <!-- PROJECT 2 -->
-
+                    <!-- Project 2 -->
                     <article class="project-card">
 
-                        <div class="project-image project-two">
+                        <div class="project-thumbnail project-two">
 
                             <i class="fa-solid fa-user"></i>
 
-                            <span>PROFILE</span>
+                            <span>PROFILE WEBSITE</span>
 
                         </div>
 
                         <div class="project-content">
 
-                            <span class="project-number">02</span>
+                            <span class="project-number">
+                                02
+                            </span>
 
-                            <h3>Kanhaiya Profile</h3>
+                            <h3>
+                                Kanhaiya Profile
+                            </h3>
 
                             <p>
-                                Professional profile website created
-                                during InAmigos Foundation internship.
+                                Professional profile website created for
+                                InAmigos Foundation.
                             </p>
 
-                            <div class="project-tags">
+                            <div class="project-tech">
                                 <span>HTML</span>
                                 <span>CSS</span>
-                                <span>Internship</span>
+                                <span>Responsive</span>
                             </div>
 
-                            <a href="https://kanhaiyamm55-cmd.github.io/kanhaiya-profile/"
-                                target="_blank" class="project-link">
+                            <a
+                                href="https://kanhaiyamm55-cmd.github.io/kanhaiya-profile/"
+                                target="_blank"
+                                class="project-link">
+
                                 View Project
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
                             </a>
 
                         </div>
@@ -540,39 +619,46 @@
                     </article>
 
 
-                    <!-- PROJECT 3 -->
-
+                    <!-- Project 3 -->
                     <article class="project-card">
 
-                        <div class="project-image project-three">
+                        <div class="project-thumbnail project-three">
 
                             <i class="fa-solid fa-diagram-project"></i>
 
-                            <span>COORDIFLOW</span>
+                            <span>ASSIGNMENT</span>
 
                         </div>
 
                         <div class="project-content">
 
-                            <span class="project-number">03</span>
+                            <span class="project-number">
+                                03
+                            </span>
 
-                            <h3>Coordiflow AS-01</h3>
+                            <h3>
+                                Coordiflow AS-01
+                            </h3>
 
                             <p>
-                                A structured assignment project focused
-                                on professional web presentation.
+                                Frontend assignment project focused on
+                                structured and responsive web design.
                             </p>
 
-                            <div class="project-tags">
+                            <div class="project-tech">
                                 <span>HTML</span>
                                 <span>CSS</span>
-                                <span>UI</span>
+                                <span>JavaScript</span>
                             </div>
 
-                            <a href="https://kanhaiyamm55-cmd.github.io/coordiflow-as01/"
-                                target="_blank" class="project-link">
+                            <a
+                                href="https://kanhaiyamm55-cmd.github.io/coordiflow-as01/"
+                                target="_blank"
+                                class="project-link">
+
                                 View Project
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
                             </a>
 
                         </div>
@@ -580,39 +666,46 @@
                     </article>
 
 
-                    <!-- PROJECT 4 -->
-
+                    <!-- Project 4 -->
                     <article class="project-card">
 
-                        <div class="project-image project-four">
+                        <div class="project-thumbnail project-four">
 
                             <i class="fa-solid fa-utensils"></i>
 
-                            <span>FOOD PALACE</span>
+                            <span>FOOD WEBSITE</span>
 
                         </div>
 
                         <div class="project-content">
 
-                            <span class="project-number">04</span>
+                            <span class="project-number">
+                                04
+                            </span>
 
-                            <h3>Kanha Food Palace</h3>
+                            <h3>
+                                Kanha Food Palace
+                            </h3>
 
                             <p>
-                                Restaurant and food website with
-                                responsive web interface.
+                                Food website with a clean interface and
+                                user-friendly layout.
                             </p>
 
-                            <div class="project-tags">
+                            <div class="project-tech">
                                 <span>HTML</span>
                                 <span>CSS</span>
                                 <span>JavaScript</span>
                             </div>
 
-                            <a href="https://kanhaiyamm55-cmd.github.io/full-stack-learning/"
-                                target="_blank" class="project-link">
+                            <a
+                                href="https://kanhaiyamm55-cmd.github.io/full-stack-learning/"
+                                target="_blank"
+                                class="project-link">
+
                                 View Project
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
                             </a>
 
                         </div>
@@ -620,79 +713,46 @@
                     </article>
 
 
-                    <!-- PROJECT 5 -->
-
+                    <!-- Project 5 -->
                     <article class="project-card">
 
-                        <div class="project-image project-five">
+                        <div class="project-thumbnail project-five">
 
                             <i class="fa-solid fa-cart-shopping"></i>
 
-                            <span>SHOPNEST</span>
+                            <span>SHOPPING</span>
 
                         </div>
 
                         <div class="project-content">
 
-                            <span class="project-number">05</span>
+                            <span class="project-number">
+                                05
+                            </span>
 
-                            <h3>ShopNest Shopping Page</h3>
-
-                            <p>
-                                Modern shopping interface designed
-                                for an online store experience.
-                            </p>
-
-                            <div class="project-tags">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>UI</span>
-                            </div>
-
-                            <a href="https://kanhaiyamm55-cmd.github.io/shoping-page/"
-                                target="_blank" class="project-link">
-                                View Project
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- PROJECT 6 -->
-
-                    <article class="project-card">
-
-                        <div class="project-image project-six">
-
-                            <i class="fa-solid fa-burger"></i>
-
-                            <span>FOODIES</span>
-
-                        </div>
-
-                        <div class="project-content">
-
-                            <span class="project-number">06</span>
-
-                            <h3>Foodies Restaurant</h3>
+                            <h3>
+                                ShopNest
+                            </h3>
 
                             <p>
-                                Restaurant website with a clean,
-                                attractive and responsive design.
+                                Modern shopping page interface designed
+                                for a smooth browsing experience.
                             </p>
 
-                            <div class="project-tags">
+                            <div class="project-tech">
                                 <span>HTML</span>
                                 <span>CSS</span>
                                 <span>JavaScript</span>
                             </div>
 
-                            <a href="https://kanhaiyamm55-cmd.github.io/full-stack-learning/Restaurant-Website/"
-                                target="_blank" class="project-link">
+                            <a
+                                href="https://kanhaiyamm55-cmd.github.io/shoping-page/"
+                                target="_blank"
+                                class="project-link">
+
                                 View Project
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
                             </a>
 
                         </div>
@@ -700,39 +760,93 @@
                     </article>
 
 
-                    <!-- PROJECT 7 -->
-
+                    <!-- Project 6 -->
                     <article class="project-card">
 
-                        <div class="project-image project-seven">
+                        <div class="project-thumbnail project-six">
+
+                            <i class="fa-solid fa-bowl-food"></i>
+
+                            <span>RESTAURANT</span>
+
+                        </div>
+
+                        <div class="project-content">
+
+                            <span class="project-number">
+                                06
+                            </span>
+
+                            <h3>
+                                Foodies Restaurant
+                            </h3>
+
+                            <p>
+                                Responsive restaurant website with a
+                                modern visual design.
+                            </p>
+
+                            <div class="project-tech">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+
+                            <a
+                                href="https://kanhaiyamm55-cmd.github.io/full-stack-learning/Restaurant-Website/"
+                                target="_blank"
+                                class="project-link">
+
+                                View Project
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Project 7 -->
+                    <article class="project-card">
+
+                        <div class="project-thumbnail project-seven">
 
                             <i class="fa-solid fa-graduation-cap"></i>
 
-                            <span>LEARN-HUB</span>
+                            <span>E-LEARNING</span>
 
                         </div>
 
                         <div class="project-content">
 
-                            <span class="project-number">07</span>
+                            <span class="project-number">
+                                07
+                            </span>
 
-                            <h3>Learn-Hub E-Learning Platform</h3>
+                            <h3>
+                                Learn-Hub
+                            </h3>
 
                             <p>
                                 E-learning platform interface designed
-                                for online courses and education.
+                                for online learning and courses.
                             </p>
 
-                            <div class="project-tags">
+                            <div class="project-tech">
                                 <span>HTML</span>
                                 <span>CSS</span>
-                                <span>Education</span>
+                                <span>JavaScript</span>
                             </div>
 
-                            <a href="https://kanhaiyamm55-cmd.github.io/full-stack-learning/learnHub/"
-                                target="_blank" class="project-link">
+                            <a
+                                href="https://kanhaiyamm55-cmd.github.io/full-stack-learning/learnHub/"
+                                target="_blank"
+                                class="project-link">
+
                                 View Project
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
                             </a>
 
                         </div>
@@ -740,39 +854,46 @@
                     </article>
 
 
-                    <!-- PROJECT 8 -->
-
+                    <!-- Project 8 -->
                     <article class="project-card">
 
-                        <div class="project-image project-eight">
+                        <div class="project-thumbnail project-eight">
 
                             <i class="fa-solid fa-images"></i>
 
-                            <span>IMAGE GALLERY</span>
+                            <span>CODEALPHA TASK</span>
 
                         </div>
 
                         <div class="project-content">
 
-                            <span class="project-number">08</span>
+                            <span class="project-number">
+                                08
+                            </span>
 
-                            <h3>CodeAlpha Image Gallery</h3>
+                            <h3>
+                                CodeAlpha Image Gallery
+                            </h3>
 
                             <p>
                                 Responsive image gallery with modern
-                                layout and interactive functionality.
+                                interactions and visual effects.
                             </p>
 
-                            <div class="project-tags">
+                            <div class="project-tech">
                                 <span>HTML</span>
                                 <span>CSS</span>
                                 <span>JavaScript</span>
                             </div>
 
-                            <a href="https://kanhaiyamm55-cmd.github.io/CodeAlpha/CodeAlpha_ImageGallery/"
-                                target="_blank" class="project-link">
+                            <a
+                                href="https://kanhaiyamm55-cmd.github.io/CodeAlpha/CodeAlpha_ImageGallery/"
+                                target="_blank"
+                                class="project-link">
+
                                 View Project
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
                             </a>
 
                         </div>
@@ -780,39 +901,46 @@
                     </article>
 
 
-                    <!-- PROJECT 9 -->
-
+                    <!-- Project 9 -->
                     <article class="project-card">
 
-                        <div class="project-image project-nine">
+                        <div class="project-thumbnail project-nine">
 
                             <i class="fa-solid fa-calculator"></i>
 
-                            <span>CALCULATOR</span>
+                            <span>CODEALPHA TASK</span>
 
                         </div>
 
                         <div class="project-content">
 
-                            <span class="project-number">09</span>
+                            <span class="project-number">
+                                09
+                            </span>
 
-                            <h3>CodeAlpha Calculator</h3>
+                            <h3>
+                                CodeAlpha Calculator
+                            </h3>
 
                             <p>
-                                Interactive calculator built as part
-                                of the CodeAlpha frontend internship.
+                                Functional calculator with a clean
+                                responsive interface.
                             </p>
 
-                            <div class="project-tags">
+                            <div class="project-tech">
                                 <span>HTML</span>
                                 <span>CSS</span>
                                 <span>JavaScript</span>
                             </div>
 
-                            <a href="https://kanhaiyamm55-cmd.github.io/CodeAlpha/CodeAlpha_Calculator/"
-                                target="_blank" class="project-link">
+                            <a
+                                href="https://kanhaiyamm55-cmd.github.io/CodeAlpha/CodeAlpha_Calculator/"
+                                target="_blank"
+                                class="project-link">
+
                                 View Project
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
                             </a>
 
                         </div>
@@ -826,50 +954,53 @@
         </section>
 
 
-        <!-- ================= RESUME ================= -->
+        <!-- =========================
+             RESUME
+        ========================== -->
 
-        <section id="resume" class="section resume-section">
+        <section class="section resume-section" id="resume">
 
             <div class="container">
 
                 <div class="resume-box">
 
-                    <!-- Left -->
+                    <div class="resume-decoration decoration-one"></div>
+                    <div class="resume-decoration decoration-two"></div>
 
                     <div class="resume-content">
 
-                        <span class="resume-label">
+                        <span class="section-label resume-label">
                             MY RESUME
                         </span>
 
                         <h2>
-                            Want to know more
-                            <strong>about me?</strong>
+                            Let's take a look at
+                            <span>my resume.</span>
                         </h2>
 
                         <p>
-                            View my resume to learn more about my education,
-                            technical skills, internships and projects.
+                            Explore my education, skills, experience and
+                            web development projects.
                         </p>
 
                         <div class="resume-buttons">
 
-                            <a href="resume.pdf"
+                            <a
+                                href="resume.pdf"
                                 target="_blank"
-                                class="primary-btn">
+                                class="btn resume-view-btn">
 
-                                <i class="fa-solid fa-eye"></i>
-
+                                <i class="fa-regular fa-file-pdf"></i>
                                 View Resume
 
                             </a>
 
-                            <a href="resume.pdf"
+                            <a
+                                href="resume.pdf"
                                 download
-                                class="secondary-btn">
+                                class="btn resume-download-btn">
 
                                 <i class="fa-solid fa-download"></i>
-
                                 Download Resume
 
                             </a>
@@ -879,8 +1010,7 @@
                     </div>
 
 
-                    <!-- Right Premium Resume Preview -->
-
+                    <!-- Premium Resume Preview -->
                     <div class="resume-preview">
 
                         <div class="resume-paper">
@@ -889,14 +1019,17 @@
 
                                 <div class="resume-photo">
 
-                                    <img src="image.jpeg"
+                                    <img
+                                        src="image.jpeg"
                                         alt="Kanhaiya Mishra">
 
                                 </div>
 
                                 <div>
 
-                                    <h3>Kanhaiya Mishra</h3>
+                                    <h3>
+                                        Kanhaiya Mishra
+                                    </h3>
 
                                     <p>
                                         Frontend & AI Web Developer
@@ -912,7 +1045,9 @@
 
                             <div class="resume-mini-section">
 
-                                <h4>PROFILE</h4>
+                                <h4>
+                                    PROFILE
+                                </h4>
 
                                 <p>
                                     BCA student and aspiring Full Stack
@@ -925,7 +1060,9 @@
 
                             <div class="resume-mini-section">
 
-                                <h4>TECHNICAL SKILLS</h4>
+                                <h4>
+                                    TECHNICAL SKILLS
+                                </h4>
 
                                 <div class="mini-skills">
 
@@ -943,7 +1080,9 @@
 
                             <div class="resume-mini-section">
 
-                                <h4>EXPERIENCE</h4>
+                                <h4>
+                                    EXPERIENCE
+                                </h4>
 
                                 <div class="mini-experience">
 
@@ -962,9 +1101,17 @@
 
                             <div class="resume-mini-footer">
 
-                                <span>GitHub</span>
-                                <span>LinkedIn</span>
-                                <span>Web Projects</span>
+                                <span>
+                                    GitHub
+                                </span>
+
+                                <span>
+                                    LinkedIn
+                                </span>
+
+                                <span>
+                                    Web Projects
+                                </span>
 
                             </div>
 
@@ -997,24 +1144,28 @@
         </section>
 
 
-        <!-- ================= CONTACT ================= -->
+        <!-- =========================
+             CONTACT
+        ========================== -->
 
-        <section id="contact" class="section contact-section">
+        <section class="section contact-section" id="contact">
 
             <div class="container">
 
-                <div class="section-heading center">
+                <div class="section-heading">
 
-                    <span>CONTACT</span>
+                    <span class="section-label">
+                        CONTACT
+                    </span>
 
                     <h2>
                         Let's build something
-                        <strong>great together.</strong>
+                        <span>great together.</span>
                     </h2>
 
                     <p>
-                        Interested in my work? Connect with me through
-                        GitHub or LinkedIn.
+                        I'm always interested in learning, building and
+                        exploring new opportunities.
                     </p>
 
                 </div>
@@ -1029,12 +1180,17 @@
                         </div>
 
                         <div>
+
                             <span>GitHub</span>
 
-                            <a href="https://github.com/kanhaiyamm55-cmd"
+                            <a
+                                href="https://github.com/kanhaiyamm55-cmd"
                                 target="_blank">
+
                                 github.com/kanhaiyamm55-cmd
+
                             </a>
+
                         </div>
 
                     </div>
@@ -1047,12 +1203,17 @@
                         </div>
 
                         <div>
+
                             <span>LinkedIn</span>
 
-                            <a href="https://www.linkedin.com/in/kanhaiya-mishra-147518372"
+                            <a
+                                href="https://www.linkedin.com/in/kanhaiya-mishra-147518372"
                                 target="_blank">
+
                                 LinkedIn Profile
+
                             </a>
+
                         </div>
 
                     </div>
@@ -1065,11 +1226,15 @@
                         </div>
 
                         <div>
+
                             <span>Email</span>
 
-                            <a href="mailto: kanhaiyamm55@gmail.com">
+                            <a href="mailto:kanhaiyamm55@gmail.com">
+
                                 kanhaiyamm55@gmail.com
+
                             </a>
+
                         </div>
 
                     </div>
@@ -1083,28 +1248,24 @@
     </main>
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
     <footer class="footer">
 
         <div class="container footer-content">
 
-            <div>
-
-                <a href="#home" class="logo">
-                    KM<span>.</span>
-                </a>
-
-                <p>
-                    Frontend & AI Web Developer
-                </p>
-
-            </div>
-
             <p>
                 © <span id="currentYear"></span>
-                Kanhaiya Mishra. All rights reserved.
+                Kanhaiya Mishra. All Rights Reserved.
             </p>
+
+            <div class="footer-links">
+
+                <a href="#home">Back to top</a>
+
+            </div>
 
         </div>
 
@@ -1112,9 +1273,7 @@
 
 
     <!-- JavaScript -->
-
     <script src="script.js"></script>
 
 </body>
-
 </html>
