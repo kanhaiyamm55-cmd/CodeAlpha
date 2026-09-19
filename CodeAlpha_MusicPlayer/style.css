@@ -1,0 +1,1065 @@
+/* =====================================================
+   MELODYBOX - PROFESSIONAL MUSIC PLAYER
+   Responsive: Desktop + Laptop + Tablet + Mobile
+   ===================================================== */
+
+
+/* ================= RESET ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    color: #172033;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ================= HEADER ================= */
+
+header {
+    height: 72px;
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    box-shadow:
+        0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+.logo h1 {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #6366f1;
+}
+
+
+/* MOBILE MENU BUTTON */
+
+.menu-btn {
+    display: none;
+
+    border: none;
+
+    background: #eef2ff;
+    color: #4f46e5;
+
+    width: 44px;
+    height: 44px;
+
+    border-radius: 11px;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.menu-btn:hover {
+    background: #e0e7ff;
+    transform: scale(1.04);
+}
+
+
+/* ================= APP LAYOUT ================= */
+
+.app {
+    display: flex;
+
+    min-height: calc(100vh - 72px);
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    width: 270px;
+
+    flex-shrink: 0;
+
+    background: #ffffff;
+
+    border-right: 1px solid #e5e7eb;
+
+    padding: 25px 18px;
+
+    transition: 0.3s;
+}
+
+
+/* SIDEBAR TITLE */
+
+.sidebar-title {
+    font-size: 12px;
+
+    color: #94a3b8;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.2px;
+
+    margin:
+        5px 12px
+        14px;
+}
+
+
+/* CATEGORY BUTTON */
+
+.category-btn {
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 11px 14px;
+
+    margin-bottom: 6px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: #475569;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.category-btn:hover {
+    background: #f1f5ff;
+    color: #4f46e5;
+    transform: translateX(3px);
+}
+
+
+/* ACTIVE CATEGORY */
+
+.category-btn.active {
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    font-weight: 700;
+
+    box-shadow:
+        inset 3px 0 0 #6366f1;
+}
+
+
+/* CATEGORY ICON */
+
+.category-icon {
+    width: 37px;
+    height: 37px;
+
+    flex-shrink: 0;
+
+    background: #f8fafc;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+
+    transition: 0.25s;
+}
+
+.category-btn.active .category-icon {
+    background: #6366f1;
+    color: white;
+}
+
+
+/* ================= MAIN CONTENT ================= */
+
+main {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 35px;
+
+    padding-bottom: 175px;
+}
+
+
+/* WELCOME */
+
+.welcome {
+    margin-bottom: 30px;
+}
+
+.welcome h2 {
+    font-size: 30px;
+
+    line-height: 1.2;
+
+    margin-bottom: 8px;
+}
+
+.welcome p {
+    color: #64748b;
+
+    font-size: 15px;
+}
+
+
+/* SECTION HEADING */
+
+.section-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.section-heading h3 {
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+.song-count {
+    color: #64748b;
+
+    font-size: 14px;
+
+    background: #ffffff;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    border: 1px solid #e5e7eb;
+}
+
+
+/* ================= SONG GRID ================= */
+
+.song-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(240px, 1fr)
+        );
+
+    gap: 20px;
+}
+
+
+/* SONG CARD */
+
+.song-card {
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 18px;
+
+    padding: 15px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+
+    overflow: hidden;
+}
+
+.song-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(15, 23, 42, 0.09);
+}
+
+.song-card.active {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 10px 30px
+        rgba(99, 102, 241, 0.18);
+}
+
+
+/* ALBUM ART */
+
+.album-art {
+    height: 175px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6,
+            #ec4899
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+    box-shadow:
+        inset 0 0 30px
+        rgba(255, 255, 255, 0.08);
+}
+
+
+/* SONG INFORMATION */
+
+.song-info {
+    min-width: 0;
+}
+
+.song-info h4 {
+    font-size: 16px;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.song-info p {
+    font-size: 13px;
+
+    color: #94a3b8;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* ================= MUSIC PLAYER ================= */
+
+.player {
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    min-height: 105px;
+
+    background:
+        rgba(255, 255, 255, 0.97);
+
+    border-top: 1px solid #e5e7eb;
+
+    backdrop-filter: blur(15px);
+
+    z-index: 2000;
+
+    padding: 14px 28px;
+
+    box-shadow:
+        0 -8px 30px
+        rgba(15, 23, 42, 0.06);
+}
+
+
+/* PLAYER INNER */
+
+.player-inner {
+    max-width: 1500px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        240px
+        minmax(300px, 1fr)
+        230px;
+
+    gap: 25px;
+
+    align-items: center;
+}
+
+
+/* ================= NOW PLAYING ================= */
+
+.now-playing {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+}
+
+
+/* MINI ART */
+
+.mini-art {
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #ec4899
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+
+    box-shadow:
+        0 7px 18px
+        rgba(99, 102, 241, 0.2);
+}
+
+
+/* NOW PLAYING TEXT */
+
+.now-text {
+    min-width: 0;
+}
+
+.now-text strong {
+    display: block;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.now-text span {
+    display: block;
+
+    font-size: 12px;
+
+    color: #94a3b8;
+
+    margin-top: 4px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* ================= CONTROLS ================= */
+
+.controls-area {
+    min-width: 0;
+}
+
+.controls {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 8px;
+}
+
+
+/* CONTROL BUTTON */
+
+.control-btn {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #475569;
+
+    font-size: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.control-btn:hover {
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    transform: scale(1.06);
+}
+
+
+/* PLAY BUTTON */
+
+.play-btn {
+    width: 47px;
+    height: 47px;
+
+    background: #6366f1;
+
+    color: white;
+
+    font-size: 19px;
+
+    box-shadow:
+        0 7px 18px
+        rgba(99, 102, 241, 0.28);
+}
+
+.play-btn:hover {
+    background: #4f46e5;
+
+    color: white;
+
+    transform: scale(1.08);
+}
+
+
+/* ACTIVE SHUFFLE / REPEAT */
+
+.control-btn.active {
+    color: #6366f1;
+
+    background: #eef2ff;
+}
+
+
+/* ================= PROGRESS ================= */
+
+.progress-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+/* RANGE SLIDER */
+
+input[type="range"] {
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    width: 100%;
+
+    height: 5px;
+
+    background: #e2e8f0;
+
+    border-radius: 20px;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+
+/* CHROME / EDGE / SAFARI THUMB */
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    width: 13px;
+    height: 13px;
+
+    background: #6366f1;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 2px 7px
+        rgba(99, 102, 241, 0.35);
+}
+
+
+/* FIREFOX THUMB */
+
+input[type="range"]::-moz-range-thumb {
+    width: 13px;
+    height: 13px;
+
+    background: #6366f1;
+
+    border: none;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+
+/* ================= VOLUME ================= */
+
+.volume-area {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 9px;
+}
+
+.volume-icon {
+    font-size: 19px;
+
+    width: 25px;
+
+    text-align: center;
+}
+
+.volume-slider {
+    width: 110px !important;
+}
+
+
+/* =====================================================
+   TABLET + MOBILE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    /* HEADER */
+
+    header {
+        padding: 0 18px;
+    }
+
+    .menu-btn {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+
+    /* APP */
+
+    .app {
+        display: block;
+    }
+
+
+    /* SIDEBAR */
+
+    .sidebar {
+        position: fixed;
+
+        top: 72px;
+
+        left: -290px;
+
+        bottom: 0;
+
+        z-index: 1500;
+
+        width: 270px;
+
+        box-shadow:
+            10px 0 35px
+            rgba(0, 0, 0, 0.12);
+
+        overflow-y: auto;
+
+        transition:
+            left 0.3s ease;
+    }
+
+
+    .sidebar.open {
+        left: 0;
+    }
+
+
+    /* MAIN */
+
+    main {
+        padding: 28px 20px;
+
+        padding-bottom: 200px;
+    }
+
+
+    /* PLAYER */
+
+    .player {
+        min-height: 175px;
+
+        padding: 12px 18px;
+    }
+
+    .player-inner {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+
+    /* NOW PLAYING */
+
+    .now-playing {
+        justify-content: center;
+    }
+
+
+    /* CONTROLS */
+
+    .controls {
+        margin-bottom: 7px;
+    }
+
+
+    /* VOLUME */
+
+    .volume-area {
+        justify-content: center;
+    }
+
+    .volume-slider {
+        width: 130px !important;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    /* HEADER */
+
+    header {
+        height: 65px;
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+
+        font-size: 20px;
+    }
+
+    .logo h1 {
+        font-size: 18px;
+    }
+
+
+    /* SIDEBAR */
+
+    .sidebar {
+        top: 65px;
+    }
+
+
+    /* MAIN */
+
+    main {
+        padding:
+            23px 15px
+            195px;
+    }
+
+
+    /* WELCOME */
+
+    .welcome {
+        margin-bottom: 24px;
+    }
+
+    .welcome h2 {
+        font-size: 24px;
+    }
+
+    .welcome p {
+        font-size: 14px;
+
+        line-height: 1.5;
+    }
+
+
+    /* SECTION */
+
+    .section-heading h3 {
+        font-size: 18px;
+    }
+
+    .song-count {
+        font-size: 12px;
+
+        padding:
+            6px 10px;
+    }
+
+
+    /* SONG GRID */
+
+    .song-list {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+
+    /* SONG CARD */
+
+    .song-card {
+        padding: 13px;
+    }
+
+    .album-art {
+        height: 190px;
+
+        font-size: 58px;
+    }
+
+
+    /* PLAYER */
+
+    .player {
+        min-height: 184px;
+
+        padding:
+            11px 13px;
+    }
+
+
+    /* CONTROLS */
+
+    .controls {
+        gap: 4px;
+    }
+
+    .control-btn {
+        width: 35px;
+        height: 35px;
+
+        font-size: 16px;
+    }
+
+    .play-btn {
+        width: 44px;
+        height: 44px;
+
+        font-size: 18px;
+    }
+
+
+    /* NOW PLAYING */
+
+    .mini-art {
+        width: 48px;
+        height: 48px;
+
+        font-size: 20px;
+    }
+
+    .now-text strong {
+        font-size: 13px;
+    }
+
+
+    /* VOLUME */
+
+    .volume-area {
+        gap: 7px;
+    }
+
+    .volume-slider {
+        width: 120px !important;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 380px) {
+
+    .logo h1 {
+        font-size: 16px;
+    }
+
+    .welcome h2 {
+        font-size: 21px;
+    }
+
+    .controls {
+        gap: 1px;
+    }
+
+    .control-btn {
+        width: 32px;
+        height: 32px;
+
+        font-size: 15px;
+    }
+
+    .play-btn {
+        width: 42px;
+        height: 42px;
+    }
+
+    .progress-row {
+        gap: 6px;
+
+        font-size: 10px;
+    }
+}
+
+
+/* =====================================================
+   SCROLLBAR
+   ===================================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}

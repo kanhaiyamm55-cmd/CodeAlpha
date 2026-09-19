@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MelodyBox - Music Player</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            color: #172033;
+            min-height: 100vh;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            height: 72px;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .logo h1 {
+            font-size: 21px;
+        }
+
+        .logo span {
+            color: #6366f1;
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 25px;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* ================= LAYOUT ================= */
+
+        .app {
+            display: flex;
+            min-height: calc(100vh - 72px);
+        }
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            width: 270px;
+            background: white;
+            border-right: 1px solid #e5e7eb;
+            padding: 25px 18px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-title {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 5px 12px 14px;
+        }
+
+        .category-btn {
+            width: 100%;
+            border: none;
+            background: transparent;
+            padding: 13px 15px;
+            margin-bottom: 5px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            cursor: pointer;
+            color: #475569;
+            text-align: left;
+            transition: 0.25s;
+        }
+
+        .category-btn:hover {
+            background: #f1f5ff;
+            color: #4f46e5;
+        }
+
+        .category-btn.active {
+            background: #eef2ff;
+            color: #4f46e5;
+            font-weight: 700;
+        }
+
+        .category-icon {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            border-radius: 9px;
+            font-size: 18px;
+        }
+
+        .category-btn.active .category-icon {
+            background: #6366f1;
+            color: white;
+        }
+
+        /* ================= MAIN ================= */
+
+        main {
+            flex: 1;
+            padding: 35px;
+            padding-bottom: 170px;
+            min-width: 0;
+        }
+
+        .welcome {
+            margin-bottom: 28px;
+        }
+
+        .welcome h2 {
+            font-size: 30px;
+            margin-bottom: 7px;
+        }
+
+        .welcome p {
+            color: #64748b;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .section-heading h3 {
+            font-size: 20px;
+        }
+
+        .song-count {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* ================= SONG GRID ================= */
+
+        .song-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 18px;
+        }
+
+        .song-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 17px;
+            padding: 16px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .song-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .song-card.active {
+            border-color: #6366f1;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+        }
+
+        .album-art {
+            height: 170px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 55px;
+            margin-bottom: 14px;
+        }
+
+        .song-info h4 {
+            font-size: 16px;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .song-info p {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        /* ================= PLAYER ================= */
+
+        .player {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            min-height: 105px;
+            background: rgba(255, 255, 255, 0.97);
+            border-top: 1px solid #e5e7eb;
+            backdrop-filter: blur(15px);
+            z-index: 2000;
+            padding: 15px 28px;
+        }
+
+        .player-inner {
+            max-width: 1500px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 240px 1fr 230px;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .now-playing {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .mini-art {
+            width: 58px;
+            height: 58px;
+            flex-shrink: 0;
+            border-radius: 11px;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .now-text {
+            min-width: 0;
+        }
+
+        .now-text strong {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .now-text span {
+            display: block;
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .controls-area {
+            min-width: 0;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 9px;
+        }
+
+        .control-btn {
+            border: none;
+            background: transparent;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #475569;
+            font-size: 18px;
+            transition: 0.2s;
+        }
+
+        .control-btn:hover {
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+
+        .play-btn {
+            width: 46px;
+            height: 46px;
+            background: #6366f1;
+            color: white;
+            font-size: 19px;
+        }
+
+        .play-btn:hover {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .control-btn.active {
+            color: #6366f1;
+            background: #eef2ff;
+        }
+
+        .progress-row {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #94a3b8;
+            font-size: 11px;
+        }
+
+        input[type="range"] {
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 13px;
+            height: 13px;
+            background: #6366f1;
+            border-radius: 50%;
+        }
+
+        .volume-area {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 9px;
+        }
+
+        .volume-icon {
+            font-size: 19px;
+        }
+
+        .volume-slider {
+            width: 110px !important;
+        }
+
+        /* ================= MOBILE SIDEBAR ================= */
+
+        @media (max-width: 900px) {
+
+            header {
+                padding: 0 18px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .app {
+                display: block;
+            }
+
+            .sidebar {
+                position: fixed;
+                top: 72px;
+                left: -290px;
+                bottom: 0;
+                z-index: 1500;
+                width: 270px;
+                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.12);
+                transition: 0.3s;
+                overflow-y: auto;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            main {
+                padding: 25px 18px;
+                padding-bottom: 190px;
+            }
+
+            .player-inner {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .player {
+                min-height: 170px;
+                padding: 12px 18px;
+            }
+
+            .now-playing {
+                justify-content: center;
+            }
+
+            .controls {
+                margin-bottom: 7px;
+            }
+
+            .volume-area {
+                justify-content: center;
+            }
+
+            .volume-slider {
+                width: 120px !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .logo h1 {
+                font-size: 18px;
+            }
+
+            .welcome h2 {
+                font-size: 24px;
+            }
+
+            .song-list {
+                grid-template-columns: 1fr;
+            }
+
+            .album-art {
+                height: 190px;
+            }
+
+            .player {
+                min-height: 178px;
+            }
+
+            .control-btn {
+                width: 35px;
+                height: 35px;
+            }
+
+            .play-btn {
+                width: 44px;
+                height: 44px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            <div class="logo-icon">🎵</div>
+            <h1>Melody<span>Box</span></h1>
+        </div>
+
+        <button class="menu-btn" id="menuBtn">
+            ☰
+        </button>
+
+    </header>
+
+
+    <div class="app">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-title">
+                Music Library
+            </div>
+
+            <button class="category-btn active" data-category="Bhojpuri">
+                <span class="category-icon">🎵</span>
+                <span>Bhojpuri</span>
+            </button>
+
+            <button class="category-btn" data-category="Hindi">
+                <span class="category-icon">🎵</span>
+                <span>Hindi</span>
+            </button>
+
+            <button class="category-btn" data-category="Bhakti">
+                <span class="category-icon">🕉️</span>
+                <span>Bhakti</span>
+            </button>
+
+            <button class="category-btn" data-category="Punjabi">
+                <span class="category-icon">🎵</span>
+                <span>Punjabi</span>
+            </button>
+
+            <button class="category-btn" data-category="Haryanvi">
+                <span class="category-icon">🎵</span>
+                <span>Haryanvi</span>
+            </button>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main>
+
+            <div class="welcome">
+                <h2>Music for every mood 🎧</h2>
+                <p>Select a category and enjoy your favorite music.</p>
+            </div>
+
+            <div class="section-heading">
+                <h3 id="categoryTitle">🎵 Bhojpuri</h3>
+                <span class="song-count" id="songCount">
+                    1 song
+                </span>
+            </div>
+
+            <div class="song-list" id="songList">
+                <!-- Songs generated by JavaScript -->
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= AUDIO ================= -->
+
+    <audio id="audioPlayer"></audio>
+
+
+    <!-- ================= BOTTOM PLAYER ================= -->
+
+    <div class="player">
+
+        <div class="player-inner">
+
+            <!-- NOW PLAYING -->
+
+            <div class="now-playing">
+
+                <div class="mini-art">
+                    🎵
+                </div>
+
+                <div class="now-text">
+                    <strong id="currentTitle">
+                        Select a song
+                    </strong>
+
+                    <span id="currentCategory">
+                        Music Player
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- CONTROLS -->
+
+            <div class="controls-area">
+
+                <div class="controls">
+
+                    <button class="control-btn"
+                            id="shuffleBtn"
+                            title="Shuffle">
+                        🔀
+                    </button>
+
+                    <button class="control-btn"
+                            id="previousBtn"
+                            title="Previous">
+                        ⏮️
+                    </button>
+
+                    <button class="control-btn play-btn"
+                            id="playBtn"
+                            title="Play / Pause">
+                        ▶️
+                    </button>
+
+                    <button class="control-btn"
+                            id="nextBtn"
+                            title="Next">
+                        ⏭️
+                    </button>
+
+                    <button class="control-btn"
+                            id="repeatBtn"
+                            title="Repeat">
+                        🔁
+                    </button>
+
+                </div>
+
+
+                <div class="progress-row">
+
+                    <span id="currentTime">
+                        0:00
+                    </span>
+
+                    <input type="range"
+                           id="progressBar"
+                           min="0"
+                           max="100"
+                           value="0">
+
+                    <span id="duration">
+                        0:00
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- VOLUME -->
+
+            <div class="volume-area">
+
+                <span class="volume-icon" id="volumeIcon">
+                    🔊
+                </span>
+
+                <input type="range"
+                       class="volume-slider"
+                       id="volumeSlider"
+                       min="0"
+                       max="1"
+                       step="0.01"
+                       value="1">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /*
+        =====================================================
+        MUSIC LIBRARY
+
+        YAHAN SE BAAD MEIN AUR SONGS ADD KAR SAKTE HO.
+
+        Example:
+
+        {
+            title: "My New Song",
+            artist: "My Artist",
+            file: "music/song6.mp3",
+            category: "Bhojpuri"
+        }
+
+        Bas music folder me song6.mp3 rakho
+        aur yahan ek new object add karo.
+        =====================================================
+        */
+
+        const songs = [
+
+            {
+                title: "Bhojpuri Song 1",
+                artist: "Bhojpuri Music",
+                file: "music/song1.mp3",
+                category: "Bhojpuri"
+            },
+
+            {
+                title: "Hindi Song 1",
+                artist: "Hindi Music",
+                file: "music/song2.mp3",
+                category: "Hindi"
+            },
+
+            {
+                title: "Bhakti Song 1",
+                artist: "Bhakti Music",
+                file: "music/song3.mp3",
+                category: "Bhakti"
+            },
+
+            {
+                title: "Punjabi Song 1",
+                artist: "Punjabi Music",
+                file: "music/song4.mp3",
+                category: "Punjabi"
+            },
+
+            {
+                title: "Haryanvi Song 1",
+                artist: "Haryanvi Music",
+                file: "music/song5.mp3",
+                category: "Haryanvi"
+            }
+
+        ];
+
+
+        /* ================= VARIABLES ================= */
+
+        const audio = document.getElementById("audioPlayer");
+
+        const songList = document.getElementById("songList");
+
+        const playBtn = document.getElementById("playBtn");
+
+        const previousBtn = document.getElementById("previousBtn");
+
+        const nextBtn = document.getElementById("nextBtn");
+
+        const shuffleBtn = document.getElementById("shuffleBtn");
+
+        const repeatBtn = document.getElementById("repeatBtn");
+
+        const progressBar = document.getElementById("progressBar");
+
+        const volumeSlider = document.getElementById("volumeSlider");
+
+        const volumeIcon = document.getElementById("volumeIcon");
+
+        const currentTitle = document.getElementById("currentTitle");
+
+        const currentCategory = document.getElementById("currentCategory");
+
+        const currentTime = document.getElementById("currentTime");
+
+        const duration = document.getElementById("duration");
+
+        const categoryTitle = document.getElementById("categoryTitle");
+
+        const songCount = document.getElementById("songCount");
+
+        const sidebar = document.getElementById("sidebar");
+
+        const menuBtn = document.getElementById("menuBtn");
+
+
+        let currentCategoryName = "Bhojpuri";
+
+        let currentSongIndex = 0;
+
+        let isShuffle = false;
+
+        let isRepeat = false;
+
+
+        /* ================= CATEGORY FILTER ================= */
+
+        function getCategorySongs() {
+
+            return songs.filter(
+                song => song.category === currentCategoryName
+            );
+
+        }
+
+
+        /* ================= DISPLAY SONGS ================= */
+
+        function displaySongs() {
+
+            const categorySongs = getCategorySongs();
+
+            songList.innerHTML = "";
+
+            categoryTitle.textContent =
+                getCategoryEmoji(currentCategoryName)
+                + " "
+                + currentCategoryName;
+
+            songCount.textContent =
+                categorySongs.length
+                + (categorySongs.length === 1 ? " song" : " songs");
+
+
+            categorySongs.forEach((song, index) => {
+
+                const card = document.createElement("div");
+
+                card.className = "song-card";
+
+
+                card.innerHTML = `
+
+                    <div class="album-art">
+                        ${getCategoryEmoji(song.category)}
+                    </div>
+
+                    <div class="song-info">
+
+                        <h4>${song.title}</h4>
+
+                        <p>${song.artist}</p>
+
+                    </div>
+
+                `;
+
+
+                card.addEventListener("click", () => {
+
+                    currentSongIndex = index;
+
+                    loadSong();
+
+                    playSong();
+
+                });
+
+
+                songList.appendChild(card);
+
+            });
+
+
+            updateActiveCard();
+
+        }
+
+
+        /* ================= CATEGORY ICON ================= */
+
+        function getCategoryEmoji(category) {
+
+            if (category === "Bhakti") {
+                return "🕉️";
+            }
+
+            return "🎵";
+
+        }
+
+
+        /* ================= LOAD SONG ================= */
+
+        function loadSong() {
+
+            const categorySongs = getCategorySongs();
+
+            if (categorySongs.length === 0) {
+                return;
+            }
+
+            const song = categorySongs[currentSongIndex];
+
+            audio.src = song.file;
+
+            currentTitle.textContent = song.title;
+
+            currentCategory.textContent =
+                song.category + " • " + song.artist;
+
+            audio.load();
+
+            updateActiveCard();
+
+        }
+
+
+        /* ================= PLAY ================= */
+
+        function playSong() {
+
+            if (!audio.src) {
+                loadSong();
+            }
+
+            audio.play()
+                .then(() => {
+
+                    playBtn.textContent = "⏸️";
+
+                })
+                .catch(error => {
+
+                    console.log(
+                        "Audio playback error:",
+                        error
+                    );
+
+                });
+
+        }
+
+
+        /* ================= PAUSE ================= */
+
+        function pauseSong() {
+
+            audio.pause();
+
+            playBtn.textContent = "▶️";
+
+        }
+
+
+        /* ================= PLAY / PAUSE ================= */
+
+        playBtn.addEventListener("click", () => {
+
+            if (!audio.src) {
+
+                loadSong();
+
+                playSong();
+
+                return;
+
+            }
+
+
+            if (audio.paused) {
+
+                playSong();
+
+            } else {
+
+                pauseSong();
+
+            }
+
+        });
+
+
+        /* ================= NEXT ================= */
+
+        nextBtn.addEventListener("click", nextSong);
+
+
+        function nextSong() {
+
+            const categorySongs = getCategorySongs();
+
+            if (categorySongs.length === 0) {
+                return;
+            }
+
+
+            if (isShuffle && categorySongs.length > 1) {
+
+                let newIndex;
+
+                do {
+
+                    newIndex =
+                        Math.floor(
+                            Math.random()
+                            * categorySongs.length
+                        );
+
+                } while (
+                    newIndex === currentSongIndex
+                );
+
+                currentSongIndex = newIndex;
+
+            } else {
+
+                currentSongIndex++;
+
+                if (
+                    currentSongIndex
+                    >= categorySongs.length
+                ) {
+
+                    currentSongIndex = 0;
+
+                }
+
+            }
+
+
+            loadSong();
+
+            playSong();
+
+        }
+
+
+        /* ================= PREVIOUS ================= */
+
+        previousBtn.addEventListener(
+            "click",
+            previousSong
+        );
+
+
+        function previousSong() {
+
+            const categorySongs = getCategorySongs();
+
+            if (categorySongs.length === 0) {
+                return;
+            }
+
+
+            currentSongIndex--;
+
+            if (currentSongIndex < 0) {
+
+                currentSongIndex =
+                    categorySongs.length - 1;
+
+            }
+
+
+            loadSong();
+
+            playSong();
+
+        }
+
+
+        /* ================= SHUFFLE ================= */
+
+        shuffleBtn.addEventListener("click", () => {
+
+            isShuffle = !isShuffle;
+
+            shuffleBtn.classList.toggle(
+                "active",
+                isShuffle
+            );
+
+        });
+
+
+        /* ================= REPEAT ================= */
+
+        repeatBtn.addEventListener("click", () => {
+
+            isRepeat = !isRepeat;
+
+            repeatBtn.classList.toggle(
+                "active",
+                isRepeat
+            );
+
+        });
+
+
+        /* ================= AUTO NEXT / REPEAT ================= */
+
+        audio.addEventListener("ended", () => {
+
+            if (isRepeat) {
+
+                audio.currentTime = 0;
+
+                playSong();
+
+            } else {
+
+                nextSong();
+
+            }
+
+        });
+
+
+        /* ================= PROGRESS ================= */
+
+        audio.addEventListener(
+            "timeupdate",
+            () => {
+
+                if (!audio.duration) {
+                    return;
+                }
+
+                const progress =
+                    (audio.currentTime
+                    / audio.duration) * 100;
+
+                progressBar.value = progress;
+
+                currentTime.textContent =
+                    formatTime(audio.currentTime);
+
+            }
+        );
+
+
+        audio.addEventListener(
+            "loadedmetadata",
+            () => {
+
+                duration.textContent =
+                    formatTime(audio.duration);
+
+            }
+        );
+
+
+        progressBar.addEventListener(
+            "input",
+            () => {
+
+                if (!audio.duration) {
+                    return;
+                }
+
+                audio.currentTime =
+                    (progressBar.value / 100)
+                    * audio.duration;
+
+            }
+        );
+
+
+        /* ================= TIME FORMAT ================= */
+
+        function formatTime(seconds) {
+
+            if (isNaN(seconds)) {
+                return "0:00";
+            }
+
+            const minutes =
+                Math.floor(seconds / 60);
+
+            const secs =
+                Math.floor(seconds % 60);
+
+            return (
+                minutes
+                + ":"
+                + String(secs).padStart(2, "0")
+            );
+
+        }
+
+
+        /* ================= VOLUME ================= */
+
+        volumeSlider.addEventListener(
+            "input",
+            () => {
+
+                audio.volume =
+                    volumeSlider.value;
+
+                updateVolumeIcon();
+
+            }
+        );
+
+
+        function updateVolumeIcon() {
+
+            const volume =
+                Number(volumeSlider.value);
+
+            if (volume === 0) {
+
+                volumeIcon.textContent = "🔇";
+
+            } else if (volume < 0.5) {
+
+                volumeIcon.textContent = "🔉";
+
+            } else {
+
+                volumeIcon.textContent = "🔊";
+
+            }
+
+        }
+
+
+        /* ================= CATEGORY BUTTONS ================= */
+
+        const categoryButtons =
+            document.querySelectorAll(
+                ".category-btn"
+            );
+
+
+        categoryButtons.forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    categoryButtons.forEach(btn => {
+
+                        btn.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+
+                    currentCategoryName =
+                        button.dataset.category;
+
+                    currentSongIndex = 0;
+
+                    displaySongs();
+
+
+                    /* Mobile menu close */
+
+                    if (
+                        window.innerWidth <= 900
+                    ) {
+
+                        sidebar.classList.remove(
+                            "open"
+                        );
+
+                    }
+
+                }
+            );
+
+        });
+
+
+        /* ================= MOBILE MENU ================= */
+
+        menuBtn.addEventListener(
+            "click",
+            () => {
+
+                sidebar.classList.toggle(
+                    "open"
+                );
+
+            }
+        );
+
+
+        /* ================= ACTIVE CARD ================= */
+
+        function updateActiveCard() {
+
+            const cards =
+                document.querySelectorAll(
+                    ".song-card"
+                );
+
+            cards.forEach(card => {
+
+                card.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+            if (cards[currentSongIndex]) {
+
+                cards[currentSongIndex]
+                    .classList.add("active");
+
+            }
+
+        }
+
+
+        /* ================= INITIALIZE ================= */
+
+        audio.volume = 1;
+
+        displaySongs();
+
+    </script>
+
+</body>
+</html>
